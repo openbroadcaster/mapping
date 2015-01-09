@@ -1,10 +1,14 @@
 ObMap
 =====
 
+REQUIREMENTS
+============
+<a href="http://leafletjs.com">Leafletjs</a> javascript library
+<a href="https://github.com/perliedman/leaflet-realtime">Leaflet-Realtime</a> plugin for adding map layers for live tracking of GPS, sensor data, etc.
+
+DESCRIPTION
+===========
 Show NAAD and NOAA public alerts on a map
-This module makes use of <a href=http://leafletjs.com/reference.html"">Leafletjs</a>, a lightweight, open source Javascript Library for interactive maps.
- 
-The <a href="https://github.com/perliedman/leaflet-realtime">Leaflet-Realtime</a> plugin extends L.GeoJSON allowing realtime updates to map layers, e.g. live GPS tracking, sensor data etc.
 
 ObMap presently works as a standalone application, but follows the OpenBroadcaster plugin framework to allow for future integration into the <a href="https://github.com/openbroadcaster/Server"> Server Platform</a>.
 
