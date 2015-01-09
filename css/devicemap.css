@@ -27,18 +27,18 @@ padding: 2px;
     height: 399px;
     font-size: 10px;
     background: white;
-    background: rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.0);
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     border-radius: 5px;
     float:left;
     overflow: scroll;
-scrollbar-face-color: #ff8c00; 
-scrollbar-track-color: #fff8dc; 
-scrollbar-arrow-color: #ffffff; 
-scrollbar-highlight-color: #fff8dc; 
-scrollbar-shadow-color: #d2691e; 
-scrollbar-3dlight-color: #ffebcd; 
-scrollbar-darkshadow-color: #8b0000; 
+    scrollbar-face-color: #ff8c00;
+    scrollbar-track-color: #fff8dc;
+    scrollbar-arrow-color: #ffffff;
+    scrollbar-highlight-color: #fff8dc;
+    scrollbar-shadow-color: #d2691e;
+    scrollbar-3dlight-color: #ffebcd;
+    scrollbar-darkshadow-color: #8b0000;
 }
 #lege img {
     height:15px;
@@ -48,23 +48,28 @@ scrollbar-darkshadow-color: #8b0000;
   margin: 2px 5px;
   border: 1px solid #666;
   float:left;
-  border-collapse: collapse; 
+  border-collapse: collapse;
   table-layout: fixed;
 }
 #lege th {
-  background: #f0f0f0;
-  width: 90px;
+  background: white;
+  background: rgba(255,255,255,0.6);
+  font-color: #fff;
   font-weight: bold;
 }
 #lege table td, table th {
    text-align:left;
+   width: 110px;
 }
 #lege table td + td, table th + th {
+   width: 70px;
    text-align:center;
+   background: white;
+   background: rgba(255,255,255,0.6);
 }
 #lege tr {
    line-height:11px;
-} 
+}
 #lege td {
    padding-left: 5px;
 }

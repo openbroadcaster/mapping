@@ -201,7 +201,7 @@ foreach my $item (@{$doc->{'entry'}}) {
        }
         if (defined $item->{'category'} && defined $item->{'category'}[8]) {
 		my $type = (split /=/,$item->{'category'}[8]{term})[1];
-		$type = '../css/images/ems/'.$type.'.png';
+		$type = '../modules/device_map/css/images/ems/'.$type.'.png';
 		$type =~ s/\s//g;
         	$properties{'iconURL'} = $type;
     }   
