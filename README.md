@@ -1,4 +1,4 @@
 ObMap
 =====
+Show NAAD and NOAA weather watch alerts on a map
 
-Show device and event status on a map
