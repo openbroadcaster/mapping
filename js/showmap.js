@@ -127,39 +127,11 @@ var alerts = L.realtime({
 //                    && feature.properties.category[6].term != "urgency=Past"
         ;}
          }).addTo(map);
-alerts.on('update', function() {
+    alerts.on('update', function() {
     map.fitBounds(alerts.getBounds(), {maxZoom: 3});
     getOutput();
 });
-/*
-$.getJSON("../includes/alerts.json",function (data) {
-	alerts.fire('data:loaded');
-	alerts = L.geoJson(data, {
-		onEachFeature: function(feature,layer){
-			if (feature.properties) {
-			   var popCon;
-			   popCon = "<p>" + feature.properties.title + "</p>";
-			   popCon =  popCon + "<a href=" + feature.properties.link.href + ">Link</a>\n";
-			   popCon = popCon + "<p>" + feature.properties.summary.content + "</p>";
-				}
-		layer.bindPopup(popCon);
-		var ctr = layer.getBounds().getCenter();
-		var smallIcon = L. icon({iconUrl:feature.properties.iconURL, iconSize:[32,32]});
-		var marker = new L.Marker(ctr, {icon:smallIcon});
-		marker.bindPopup(popCon);
-		markerLayer.addLayer(marker);
-		markerLayer.addTo(map);
-		},
-		filter: function(feature, layer) {
-			return feature.properties.category[3].term == "language=en-CA" 
-						&& feature.properties.category[0].term != "status=Test" 
-						&& feature.properties.category[6].term != "urgency=Past";
-		}
-	}).addTo(map);
-	alerts.setStyle(naadStyle);
-	map.setView([64,-98],3);
-});
-*/
+
 	var usalert = L.tileLayer.wms('http://gis.srh.noaa.gov/arcgis/services/watchwarn/MapServer/WMSServer', {
 		format: 'img/png',
 		transparent: true,
