@@ -49,6 +49,28 @@ function getRequest(url, success, error) {
     req.send(null);
     return req;
 }
+var timeInSecs;
+var ticker;
+
+function startTimer(secs){
+timeInSecs = parseInt(secs)-1;
+ticker = setInterval("tick()",1000);   // every second
+}
+
+function tick() {
+var secs = timeInSecs;
+if (secs>0) {
+timeInSecs--;
+}
+else {
+clearInterval(ticker); // stop counting at zero
+startTimer(60);  // remove forward slashes in front of startTimer to repeat if required
+}
+
+document.getElementById("countdown").innerHTML = "Map will refresh in " + secs + " seconds.\n";
+}
+
+startTimer(60);  // 60 seconds 
 
 function checkTime(i) {
     if (i < 10) {
@@ -56,6 +78,7 @@ function checkTime(i) {
     }
     return i;
 }
+
 
 function startTime() {
     var today = new Date();
@@ -83,7 +106,7 @@ var map = new L.Map('map',{attributionControl:false}).setView([60.2928,-134.2592
 var mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
 var markerLayer = new L.layerGroup();
 var OSMBase = L.tileLayer(
-		'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		'https://{s}.tiles.mapbox.com/v3/geoprism.h4g8f1k5/{z}/{x}/{y}.png', {
 		attribution: '&copy; ' + mapLink ,
 		maxZoom: 18
 		}).addTo(map);
@@ -106,9 +129,9 @@ var alerts = L.realtime({
        onEachFeature: function(feature,layer){
              if (feature.properties) {
                  var popCon;
-                     popCon = "<p>" + feature.properties.title + "</p>";
-                     popCon =  popCon + "<a href=" + feature.properties.link.href + ">Link</a>\n";
-                     popCon = popCon + "<p>" + feature.properties.summary.content + "</p>";
+                     popCon = "<h4>"  + feature.properties.title.toUpperCase() + "</h4>";
+                     popCon =  popCon + "<a href=" + feature.properties.link.href + "> (LINK TO SOURCE)</a><br>";
+                     popCon = popCon + feature.properties.summary.content ;
                 }
              layer.bindPopup(popCon);
              var ctr = layer.getBounds().getCenter();
@@ -127,11 +150,40 @@ var alerts = L.realtime({
 //                    && feature.properties.category[6].term != "urgency=Past"
         ;}
          }).addTo(map);
-    alerts.on('update', function() {
-    map.fitBounds(alerts.getBounds(), {maxZoom: 3});
+map.setView([64,-98],3);
+alerts.on('update', function() {
+//map.fitBounds(alerts.getBounds(), {maxZoom: 3});
     getOutput();
 });
-
+/*
+$.getJSON("../includes/alerts.json",function (data) {
+	alerts.fire('data:loaded');
+	alerts = L.geoJson(data, {
+		onEachFeature: function(feature,layer){
+			if (feature.properties) {
+			   var popCon;
+			   popCon = "<p>" + feature.properties.title + "</p>";
+			   popCon =  popCon + "<a href=" + feature.properties.link.href + ">Link</a>\n";
+			   popCon = popCon + "<p>" + feature.properties.summary.content + "</p>";
+				}
+		layer.bindPopup(popCon);
+		var ctr = layer.getBounds().getCenter();
+		var smallIcon = L. icon({iconUrl:feature.properties.iconURL, iconSize:[32,32]});
+		var marker = new L.Marker(ctr, {icon:smallIcon});
+		marker.bindPopup(popCon);
+		markerLayer.addLayer(marker);
+		markerLayer.addTo(map);
+		},
+		filter: function(feature, layer) {
+			return feature.properties.category[3].term == "language=en-CA" 
+						&& feature.properties.category[0].term != "status=Test" 
+						&& feature.properties.category[6].term != "urgency=Past";
+		}
+	}).addTo(map);
+	alerts.setStyle(naadStyle);
+	map.setView([64,-98],3);
+});
+*/
 	var usalert = L.tileLayer.wms('http://gis.srh.noaa.gov/arcgis/services/watchwarn/MapServer/WMSServer', {
 		format: 'img/png',
 		transparent: true,

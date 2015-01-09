@@ -113,4 +113,7 @@ scrollbar-darkshadow-color: #8b0000;
     padding: 5;
 }
 
-
+.leaflet-popup-content h4 {
+    text-transform: uppercase !important;
+    font-weight: bold;
+}
