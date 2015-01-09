@@ -1,0 +1,992 @@
+[
+    {
+     "label": "Air Stagnation Advisory",
+     "url": "69fa52050c4f76f5f61a57ca063c2d33",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jigsbGhrINgmml6ZeHjVw1MBRA0cNxG4gJcUXAwMDI7qBjJSYBgMANMwF0yIQLU0AAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Air Stagnation Advisory"
+     ]
+    },
+    {
+     "label": "Areal Flood Advisory",
+     "url": "488cbb36263601bf350511a9bab10af7",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jqgv/11NgVCMDAwONvTxq4KiBowaOGojDQGgRRCZgRDeQkRLTYAAAiKED1c970rAAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Areal Flood Advisory"
+     ]
+    },
+    {
+     "label": "Areal Flood Warning",
+     "url": "9f43f64e0bbf3b8814e0dd6e6d44ae8d",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADRJREFUOI1jYaAyYKGlgf+pYB4jqgspMZIRQtHUy6MGjho4auCogTgMZKTILEZ0AykzDgoACn8CVEWKLv4AAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Areal Flood Warning"
+     ]
+    },
+    {
+     "label": "Areal Flood Watch",
+     "url": "562fd7d04b79fb887f6b3f125ff78636",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigu1u8LINulq2SoGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAXS8GSCJvMf8AAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Areal Flood Watch"
+     ]
+    },
+    {
+     "label": "Ashfall Advisory",
+     "url": "57668acc88a7f21c4dd07c33623575ee",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigtXrlxJtknh4eEMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEACoQFWD8ugZ4AAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Ashfall Advisory"
+     ]
+    },
+    {
+     "label": "Blizzard Warning",
+     "url": "2dbbae3e765d80270fa809c3cc5f27f3",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADlJREFUOI1jYaAyYKGlgf+pYB4jigv/u1Ng0k4ITVMvjxo4auCogaMGYjcQVgSRCRjRDWSkyDgoAACeYwQNrQfrUQAAAABJRU5ErkJggg==",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Blizzard Warning"
+     ]
+    },
+    {
+     "label": "Blizzard Watch",
+     "url": "be41520bfe8c660a25e173528c34e076",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigvX/Ncm26QQxqsMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAFrsFfczKReQAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Blizzard Watch"
+     ]
+    },
+    {
+     "label": "Blowing Dust Advisory",
+     "url": "38bf1be2366f96b5a4dcf18c8e52f41b",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigv37sgi2yRnj2kMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAE9EFdD+18uEAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Blowing Dust Advisory"
+     ]
+    },
+    {
+     "label": "Blowing Snow Advisory",
+     "url": "7ab966d4125e8ea7e4cc694cb603c53c",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigvX3HhGtkkhGlIMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEA5IcE6SCdn1IAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Blowing Snow Advisory"
+     ]
+    },
+    {
+     "label": "Brisk Wind Advisory",
+     "url": "e8f2d26906a8294910d586435315e756",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigtv7L9BtkkajhoMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEA4pUE5Gko1okAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Brisk Wind Advisory"
+     ]
+    },
+    {
+     "label": "Coastal Flood Advisory",
+     "url": "fb6733015024d1c9d7c6bd352a2f9d31",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jigtr/pJvUgszhKapl0cNHDVw1MBRA7EbCCuCyASM6AYyUmQcFAAAjV4D2vKuGksAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Coastal Flood Advisory"
+     ]
+    },
+    {
+     "label": "Coastal Flood Statement",
+     "url": "5fabea675396e7e27de1fd3970bbcc7a",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jiguzeuXJNmla8UMGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAWPEGPRcNkFkAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Coastal Flood Statement"
+     ]
+    },
+    {
+     "label": "Coastal Flood Warning",
+     "url": "a7723e7e70359743419bfa73ec06b874",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigvlu+TJNulh2UMGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAdAwGiwnChc8AAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Coastal Flood Warning"
+     ]
+    },
+    {
+     "label": "Coastal Flood Watch",
+     "url": "8f7f5e4025cde9ec57a490f0d88debb5",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigvTzq0k26RZRuEMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAFRcFduwwox4AAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Coastal Flood Watch"
+     ]
+    },
+    {
+     "label": "Dense Fog Advisory",
+     "url": "372dae4b65a817edf3197543d95ab7ed",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigvzG/rJNmliQyEDAwONvTxq4KiBowaOGojdQFgRRCZgRDeQkRLTYAAANZwF1XBE6HkAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Dense Fog Advisory"
+     ]
+    },
+    {
+     "label": "Dense Smoke Advisory",
+     "url": "a9b7ea543299e5dcbfbcf30b46f52dbb",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigs/Pusm2yR+qVIGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAA5qcE8UDp3ZYAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Dense Smoke Advisory"
+     ]
+    },
+    {
+     "label": "Dust Storm Warning",
+     "url": "b2df4b9875b2ee93353e2c5021ff40bf",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigsfPjlCtknyMjYMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEA2YgEys5M7M4AAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Dust Storm Warning"
+     ]
+    },
+    {
+     "label": "Excessive Heat Warning",
+     "url": "db586d12629155e4d4898dd633455aa4",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigtPCLWRbZLFuyoGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAP4oF81Bbe7EAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Excessive Heat Warning"
+     ]
+    },
+    {
+     "label": "Excessive Heat Watch",
+     "url": "370b44ef41647de67f660b543f870de1",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jigsbKDAJppemXh41cNTAUQNHDcRuYANlZjGiG8hImXkQAAA3pwLTWRoBnQAAAABJRU5ErkJggg==",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Excessive Heat Watch"
+     ]
+    },
+    {
+     "label": "Extreme Cold Warning",
+     "url": "ab9550f0c517d6144fd865d8ac5a4dc6",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jmgspMZORgYGBxl4eNXDUwFEDRw3EZSAjJWYxohtIkWkwAAAJfgJUuOB5RwAAAABJRU5ErkJggg==",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Extreme Cold Warning"
+     ]
+    },
+    {
+     "label": "Extreme Cold Watch",
+     "url": "ab9550f0c517d6144fd865d8ac5a4dc6",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jmgspMZORgYGBxl4eNXDUwFEDRw3EZSAjJWYxohtIkWkwAAAJfgJUuOB5RwAAAABJRU5ErkJggg==",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Extreme Cold Watch"
+     ]
+    },
+    {
+     "label": "Extreme Wind Warning",
+     "url": "39dd705441c1ae23d50d94e1083defbd",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigsfCk0m2yT5d7kMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAMm4FzcXpOoMAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Extreme Wind Warning"
+     ]
+    },
+    {
+     "label": "Fire Weather Warning",
+     "url": "3092726c15f15b04c4ed233b6d4234e6",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigsXBKuTbVLC2psMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAV2MGORdo2mEAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Fire Weather Warning"
+     ]
+    },
+    {
+     "label": "Fire Weather Watch",
+     "url": "6ac2676e5b9f0783f53823ea5248777a",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI1jYaAyYKGlgf+pYB4jigv/319DvkmKIQwMDDT28qiBowaOGjhqIHYDYUUQmYAR3UBGSkyDAQDY+gTJJ/XiEwAAAABJRU5ErkJggg==",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Fire Weather Watch"
+     ]
+    },
+    {
+     "label": "Flash Flood Statement",
+     "url": "492192c2c711a5f02aaf5258e9a93878",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigtnnTMg26Q0owsMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEALCIFu3EcoOcAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Flash Flood Statement"
+     ]
+    },
+    {
+     "label": "Flash Flood Warning",
+     "url": "8235ced9ca69896a03a184c9f7683736",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADhJREFUOI1jYaAyYKGlgf+pYB4jigu7KDCpDErT1MujBo4aOGrgqIHYDSzDpYo4wIhuICNl5kEAADQtAskkv2wtAAAAAElFTkSuQmCC",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Flash Flood Warning"
+     ]
+    },
+    {
+     "label": "Flash Flood Watch",
+     "url": "e633ecd7564f9793fc818f3efeac4017",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigsNzhmQbdIFowsMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAUPwGJYh6zv4AAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Flash Flood Watch"
+     ]
+    },
+    {
+     "label": "Flood Advisory ",
+     "url": "488cbb36263601bf350511a9bab10af7",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jqgv/11NgVCMDAwONvTxq4KiBowaOGojDQGgRRCZgRDeQkRLTYAAAiKED1c970rAAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Flood Advisory "
+     ]
+    },
+    {
+     "label": "Flood Statement",
+     "url": "9f43f64e0bbf3b8814e0dd6e6d44ae8d",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADRJREFUOI1jYaAyYKGlgf+pYB4jqgspMZIRQtHUy6MGjho4auCogTgMZKTILEZ0AykzDgoACn8CVEWKLv4AAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Flood Statement"
+     ]
+    },
+    {
+     "label": "Flood Warning",
+     "url": "9f43f64e0bbf3b8814e0dd6e6d44ae8d",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADRJREFUOI1jYaAyYKGlgf+pYB4jqgspMZIRQtHUy6MGjho4auCogTgMZKTILEZ0AykzDgoACn8CVEWKLv4AAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Flood Warning"
+     ]
+    },
+    {
+     "label": "Flood Watch",
+     "url": "562fd7d04b79fb887f6b3f125ff78636",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigu1u8LINulq2SoGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAXS8GSCJvMf8AAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Flood Watch"
+     ]
+    },
+    {
+     "label": "Freeze Warning",
+     "url": "23f34e994658379996445649b434fe6e",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADlJREFUOI1jYaAyYKGlgf+pYB4jqgv/U2AmIyMDAwONvTxq4KiBowaOGojDQGgRRCZgRDeQItNgAABdIQNVfi5qpwAAAABJRU5ErkJggg==",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Freeze Warning"
+     ]
+    },
+    {
+     "label": "Freeze Watch",
+     "url": "d533bb14f46f0dca3cd4dd46a9d4c645",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigudMh+SbdK+6fIMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAMUsFx7jAsBQAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Freeze Watch"
+     ]
+    },
+    {
+     "label": "Freezing Fog Advisory",
+     "url": "c09840417771293a93bf6107199559aa",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADhJREFUOI1jYaAyYKGlgf+pYB4jqgsbGsg3CqqXpl4eNXDUwFEDRw3EYSAlxRcDAyO6gYyUmAYDALPyBFP7Gk+kAAAAAElFTkSuQmCC",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Freezing Fog Advisory"
+     ]
+    },
+    {
+     "label": "Freezing Rain Advisory",
+     "url": "a7f00873ceb6e26eb299eb85fe3a103e",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigszo86RbdL0ZUYMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAL1kFwt1U+6cAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Freezing Rain Advisory"
+     ]
+    },
+    {
+     "label": "Frost Advisory",
+     "url": "d12ed34a6ddc63b8ad21e6bb9f343de4",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jiguTp74j26S52UIMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAEkcFbQo0b0wAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Frost Advisory"
+     ]
+    },
+    {
+     "label": "Gale Warning",
+     "url": "3a5f15b910d84b40a4784aa7269f5b72",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigvvLbhHtklKCUoMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEA6R0E90orXKgAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Gale Warning"
+     ]
+    },
+    {
+     "label": "Hard Freeze Warning",
+     "url": "ab9550f0c517d6144fd865d8ac5a4dc6",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jmgspMZORgYGBxl4eNXDUwFEDRw3EZSAjJWYxohtIkWkwAAAJfgJUuOB5RwAAAABJRU5ErkJggg==",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Hard Freeze Warning"
+     ]
+    },
+    {
+     "label": "Hazardous Seas Warning",
+     "url": "e8f2d26906a8294910d586435315e756",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigtv7L9BtkkajhoMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEA4pUE5Gko1okAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Hazardous Seas Warning"
+     ]
+    },
+    {
+     "label": "Heat Advisory",
+     "url": "8594797d112b4eb7201156b91407344d",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI1jYaAyYKGlgf+pYB4jigv/1weSb1LjegYGBhp7edTAUQNHDRw1ELuBsCKITMCIbiAjJabBAAAY9gWENHsjOwAAAABJRU5ErkJggg==",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Heat Advisory"
+     ]
+    },
+    {
+     "label": "Heavy Freezing Spray Warning",
+     "url": "a3e625b33bc0f4466e8063e9901733c9",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADlJREFUOI1jYaAyYKGlgf+pYB4jqgv3U2CmIyMDAwONvTxq4KiBowaOGojDQGgRRCZgRDeQItNgAABzIQOVeNQYjwAAAABJRU5ErkJggg==",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Heavy Freezing Spray Warning"
+     ]
+    },
+    {
+     "label": "Heavy Snow Warning",
+     "url": "4bd333fffc9f1875c86d240335dbea62",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigs71R+RbVL5TTkGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAALvUFwUAe3y0AAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Heavy Snow Warning"
+     ]
+    },
+    {
+     "label": "High Surf Advisory",
+     "url": "91cd242a8527a56bee32e8577c059052",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigt3hV4m2yS31boMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAEzUFcVDuTJkAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "High Surf Advisory"
+     ]
+    },
+    {
+     "label": "High Surf Warning",
+     "url": "a7723e7e70359743419bfa73ec06b874",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigvlu+TJNulh2UMGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAdAwGiwnChc8AAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "High Surf Warning"
+     ]
+    },
+    {
+     "label": "High Wind Warning",
+     "url": "bdba36cc0e0c8c94ca2f1dd410888856",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigtvLZUn2yS16IcMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAKcEFtVOB5bIAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "High Wind Warning"
+     ]
+    },
+    {
+     "label": "High Wind Watch",
+     "url": "cc9b2c8cfe948603ef00b3858ee2c626",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigt3tLOTbZJH5U8GBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAASAsGDRiNFmQAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "High Wind Watch"
+     ]
+    },
+    {
+     "label": "Hurricane Force Wind Warning",
+     "url": "7f836157545300e949e2a1c50c1eff4f",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigvPRUeTbZLR0qUMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAMvkFz+lrle8AAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Hurricane Force Wind Warning"
+     ]
+    },
+    {
+     "label": "Hurricane Warning",
+     "url": "f080a4571fea97a6f60f7c1db3d55595",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigvvCtmSbZLyu8MMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAUQwGJ+NTdNwAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Hurricane Warning"
+     ]
+    },
+    {
+     "label": "Hurricane Watch",
+     "url": "8d8f984cb6535d1f6eb38cbc23240f12",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jigv/U2AmIwMjAwMDjb08auCogaMGjhqI3UBYEUQmYEQ3kCLTYAAAXiIDVbuaJW4AAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Hurricane Watch"
+     ]
+    },
+    {
+     "label": "Hydrologic Advisory",
+     "url": "488cbb36263601bf350511a9bab10af7",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jqgv/11NgVCMDAwONvTxq4KiBowaOGojDQGgRRCZgRDeQkRLTYAAAiKED1c970rAAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Hydrologic Advisory"
+     ]
+    },
+    {
+     "label": "Ice Storm Warning",
+     "url": "15429b5d47c42c18854116462c4df19d",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigu7GLrINqmMoYyBgYHGXh41cNTAUQNHDcRuIKwIIhMwohvISIlpMAAArpIEP0LOq+UAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Ice Storm Warning"
+     ]
+    },
+    {
+     "label": "Lake Effect Snow Advisory",
+     "url": "37ce106ec45b469a11bff84599d6a183",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigs9L54l26Tt+sYMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAEegFbOrBASMAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Lake Effect Snow Advisory"
+     ]
+    },
+    {
+     "label": "Lake Effect Snow Warning",
+     "url": "9fdeeb86a34f1aac2d1ba36f527d6e2c",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADtJREFUOI1jYaAyYKGlgf+pYB4jqgu7usg3qqyMgYGBxl4eNXDUwFEDRw3EYSC0CCITMKIbyEiJaTAAAK0cBD8S/Gs0AAAAAElFTkSuQmCC",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Lake Effect Snow Warning"
+     ]
+    },
+    {
+     "label": "Lake Effect Snow Watch",
+     "url": "37ce106ec45b469a11bff84599d6a183",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigs9L54l26Tt+sYMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAEegFbOrBASMAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Lake Effect Snow Watch"
+     ]
+    },
+    {
+     "label": "Lake Effect Snow and Blowing Snow Advisory",
+     "url": "37ce106ec45b469a11bff84599d6a183",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigs9L54l26Tt+sYMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAEegFbOrBASMAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Lake Effect Snow and Blowing Snow Advisory"
+     ]
+    },
+    {
+     "label": "Lake Wind Advisory",
+     "url": "29721890a3ed33b34b2263c66ca02056",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigsvbe0m2yQ971IGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAAlUFQXWA+soAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Lake Wind Advisory"
+     ]
+    },
+    {
+     "label": "Lakeshore Flood Advisory",
+     "url": "fb6733015024d1c9d7c6bd352a2f9d31",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jigtr/pJvUgszhKapl0cNHDVw1MBRA7EbCCuCyASM6AYyUmQcFAAAjV4D2vKuGksAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Lakeshore Flood Advisory"
+     ]
+    },
+    {
+     "label": "Lakeshore Flood Statement",
+     "url": "5fabea675396e7e27de1fd3970bbcc7a",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jiguzeuXJNmla8UMGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAWPEGPRcNkFkAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Lakeshore Flood Statement"
+     ]
+    },
+    {
+     "label": "Lakeshore Flood Warning",
+     "url": "a7723e7e70359743419bfa73ec06b874",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigvlu+TJNulh2UMGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAdAwGiwnChc8AAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Lakeshore Flood Warning"
+     ]
+    },
+    {
+     "label": "Lakeshore Flood Watch",
+     "url": "8f7f5e4025cde9ec57a490f0d88debb5",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigvTzq0k26RZRuEMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAFRcFduwwox4AAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Lakeshore Flood Watch"
+     ]
+    },
+    {
+     "label": "Low Water Advisory",
+     "url": "1d0c1ebaf784b2ec13c8c5455abdb89f",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jiguXqquTbVL0zZsMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAZMYGYP1xGOgAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Low Water Advisory"
+     ]
+    },
+    {
+     "label": "Marine Weather Statement",
+     "url": "85ddcfdbf98c1c8b30b0acb231571cbf",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI1jYaAyYKGlgf+pYB4jigv/f7hKvkkC2gwMDDT28qiBowaOGjhqIHYDYUUQmYAR3UBGSkyDAQDFMwSPZ2ur7gAAAABJRU5ErkJggg==",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Marine Weather Statement"
+     ]
+    },
+    {
+     "label": "Red Flag Warning",
+     "url": "0d5de8938fb64d4800def885edaa29be",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI1jYaAyYKGlgf+pYB4jigv/C00m36R3uQwMDDT28qiBowaOGjhqIHYDYUUQmYAR3UBGSkyDAQAoAAWvRIxV9gAAAABJRU5ErkJggg==",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Red Flag Warning"
+     ]
+    },
+    {
+     "label": "Severe Thunderstorm Warning",
+     "url": "22b92d64a42e284931155012cf51bfad",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADlJREFUOI1jYaAyYKGlgf+pYB4jigv/L6XApGgITVMvjxo4auCogaMGYjcQVgSRCRjRDWSkyDgoAAB+EwOvdhdDhgAAAABJRU5ErkJggg==",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Severe Thunderstorm Warning"
+     ]
+    },
+    {
+     "label": "Severe Thunderstorm Watch",
+     "url": "75eb8aabb890bfec4672bb4001e95ff7",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigunMFwm26QcBl0GBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAkkkD7Os4keIAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Severe Thunderstorm Watch"
+     ]
+    },
+    {
+     "label": "Severe Weather Statement",
+     "url": "23f34e994658379996445649b434fe6e",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADlJREFUOI1jYaAyYKGlgf+pYB4jqgv/U2AmIyMDAwONvTxq4KiBowaOGojDQGgRRCZgRDeQItNgAABdIQNVfi5qpwAAAABJRU5ErkJggg==",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Severe Weather Statement"
+     ]
+    },
+    {
+     "label": "Sleet Advisory",
+     "url": "ab7a00a6f660bd9798d117d5e8940219",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigtr0t+TbVLLTEEGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAGQ8FgYggeTAAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Sleet Advisory"
+     ]
+    },
+    {
+     "label": "Sleet Warning",
+     "url": "5eb20ec082d3c1e6aaa4509112da0bd3",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigvbz70h26RKIxEGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAA8soFEpVIAcEAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Sleet Warning"
+     ]
+    },
+    {
+     "label": "Small Craft Advisory",
+     "url": "e8f2d26906a8294910d586435315e756",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigtv7L9BtkkajhoMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEA4pUE5Gko1okAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Small Craft Advisory"
+     ]
+    },
+    {
+     "label": "Small Craft Advisory for Hazardous Seas",
+     "url": "e8f2d26906a8294910d586435315e756",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigtv7L9BtkkajhoMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEA4pUE5Gko1okAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Small Craft Advisory for Hazardous Seas"
+     ]
+    },
+    {
+     "label": "Small Craft Advisory for Rough Bar",
+     "url": "e8f2d26906a8294910d586435315e756",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigtv7L9BtkkajhoMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEA4pUE5Gko1okAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Small Craft Advisory for Rough Bar"
+     ]
+    },
+    {
+     "label": "Small Craft Advisory for Winds",
+     "url": "e8f2d26906a8294910d586435315e756",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigtv7L9BtkkajhoMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEA4pUE5Gko1okAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Small Craft Advisory for Winds"
+     ]
+    },
+    {
+     "label": "Snow and Blowing Snow Advisory",
+     "url": "160463480f70206e70746f2820d729f5",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigs3PHxGtkkB8lIMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEA4AsE3L+01GwAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Snow and Blowing Snow Advisory"
+     ]
+    },
+    {
+     "label": "Storm Warning",
+     "url": "75eb8aabb890bfec4672bb4001e95ff7",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigunMFwm26QcBl0GBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAkkkD7Os4keIAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Storm Warning"
+     ]
+    },
+    {
+     "label": "Tornado Warning",
+     "url": "d1505065bdb83c32f90afcd8e5cb494c",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jigspMZERStPUy6MGjho4auCogdgNZMSlijjAiG4gheZBAAALgAJUXqzQHAAAAABJRU5ErkJggg==",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Tornado Warning"
+     ]
+    },
+    {
+     "label": "Tornado Watch",
+     "url": "9d0f501b7a616519c2a9d030b4522752",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADhJREFUOI1jYaAyYKGlgf+pYB4jigv/U2AkIyOEpqmXRw0cNXDUwFEDsRsIK4LIBIzoBlJmHBQAAF8jA1XJU6ZXAAAAAElFTkSuQmCC",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Tornado Watch"
+     ]
+    },
+    {
+     "label": "Tropical Storm Warning",
+     "url": "3f6df659b10ad2045551a306793e8761",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigs3y8uTbZLvw4cMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAZWAGYpy0Wm4AAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Tropical Storm Warning"
+     ]
+    },
+    {
+     "label": "Tropical Storm Watch",
+     "url": "9f8677435c2218f281bc49bc727cb197",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI1jYaAyYKGlgf+pYB4jigs/NjSQbRI/VC9NvTxq4KiBowaOGojdQH4Kii8GBgZGdAMZKTENBgANgwViHdS6oQAAAABJRU5ErkJggg==",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Tropical Storm Watch"
+     ]
+    },
+    {
+     "label": "Tsunami Advisory",
+     "url": "3f0aaf4b19f475594534ac9559bc5788",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigsvZUqSbZLe9OcMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAQzMF/7S/CM8AAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Tsunami Advisory"
+     ]
+    },
+    {
+     "label": "Tsunami Warning",
+     "url": "6650a68250b655f8b0213265ba2c6684",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigv/JruTbRLz3J0MDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAJq4FrFSBHMMAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Tsunami Warning"
+     ]
+    },
+    {
+     "label": "Tsunami Watch",
+     "url": "8d8f984cb6535d1f6eb38cbc23240f12",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jigv/U2AmIwMjAwMDjb08auCogaMGjhqI3UBYEUQmYEQ3kCLTYAAAXiIDVbuaJW4AAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Tsunami Watch"
+     ]
+    },
+    {
+     "label": "Typhoon Warning",
+     "url": "f080a4571fea97a6f60f7c1db3d55595",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigvvCtmSbZLyu8MMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAUQwGJ+NTdNwAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Typhoon Warning"
+     ]
+    },
+    {
+     "label": "Typhoon Watch",
+     "url": "8d8f984cb6535d1f6eb38cbc23240f12",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jigv/U2AmIwMjAwMDjb08auCogaMGjhqI3UBYEUQmYEQ3kCLTYAAAXiIDVbuaJW4AAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Typhoon Watch"
+     ]
+    },
+    {
+     "label": "Wind Advisory",
+     "url": "29721890a3ed33b34b2263c66ca02056",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigsvbe0m2yQ971IGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAAlUFQXWA+soAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Wind Advisory"
+     ]
+    },
+    {
+     "label": "Wind Chill Advisory",
+     "url": "0254ae27e8cec01fb351b59467103ae2",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigs3vH9PtkkBgoIMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEA2CwExT4nxBYAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Wind Chill Advisory"
+     ]
+    },
+    {
+     "label": "Wind Chill Warning",
+     "url": "1068d5c6ecd7209ab234ea566bb1a150",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigs3HLlPtkkBNooMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEA7GQFAKiHU64AAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Wind Chill Warning"
+     ]
+    },
+    {
+     "label": "Wind Chill Watch",
+     "url": "60e479b07b8c33cf07fa78c4fb9cc991",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigvj5y8g26SFiQkMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAKr0Ftf1/P8AAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Wind Chill Watch"
+     ]
+    },
+    {
+     "label": "Winter Storm Warning",
+     "url": "f44bf74c9a8d15197d9d8c8c616a2eb8",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI1jYaAyYKGlgf+pYB4jigv/Z24l36Tp3gwMDDT28qiBowaOGjhqIHYDYUUQmYAR3UBGSkyDAQD+ewU2u3QwWwAAAABJRU5ErkJggg==",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Winter Storm Warning"
+     ]
+    },
+    {
+     "label": "Winter Storm Watch",
+     "url": "63827e0843924a43183ad9d4c2a77110",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigvdm7aSbdLOOm8GBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAANeoF1ZXqf8MAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Winter Storm Watch"
+     ]
+    },
+    {
+     "label": "Winter Weather Advisory",
+     "url": "99a52267f1ca2eeea4a6ca4c72562f00",
+     "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigvv72gn2yRFj0oGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAA/hUFNTKGdQwAAAAASUVORK5CYII=",
+     "contentType": "image/png",
+     "height": 20,
+     "width": 20,
+     "values": [
+      "Winter Weather Advisory"
+     ]
+    }
+   ]

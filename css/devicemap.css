@@ -1,0 +1,116 @@
+html, body {height: 100%;overflow: auto; font-family:Helvetica,Arial,'DejaVu Sans','Liberation Sans',Freesans,sans-serif;}
+#map_footer {
+   clear: both;
+   float: left;
+   font-size: 0.8em;
+}
+#map_container {
+height:405px;
+width:750px;
+display: block;
+border: 1px solid #1958ca;
+border-radius: 5px;
+padding: 2px;
+}
+#map {
+	border-radius: 5px;
+	border:2px solid #1978cf;
+	box-shadow: 0 0 8px #999;
+	float:left;
+	width:540px;
+	height:400px;	
+}
+#lege {
+    padding: 4px 6px;
+    margin: 0px 0px 2px 2px;
+    width: 190px;
+    height: 399px;
+    font-size: 10px;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    float:left;
+    overflow: scroll;
+scrollbar-face-color: #ff8c00; 
+scrollbar-track-color: #fff8dc; 
+scrollbar-arrow-color: #ffffff; 
+scrollbar-highlight-color: #fff8dc; 
+scrollbar-shadow-color: #d2691e; 
+scrollbar-3dlight-color: #ffebcd; 
+scrollbar-darkshadow-color: #8b0000; 
+}
+#lege img {
+    height:15px;
+    width:15px;
+}
+#lege table {
+  margin: 2px 5px;
+  border: 1px solid #666;
+  float:left;
+  border-collapse: collapse; 
+  table-layout: fixed;
+}
+#lege th {
+  background: #f0f0f0;
+  width: 90px;
+  font-weight: bold;
+}
+#lege table td, table th {
+   text-align:left;
+}
+#lege table td + td, table th + th {
+   text-align:center;
+}
+#lege tr {
+   line-height:11px;
+} 
+#lege td {
+   padding-left: 5px;
+}
+.info {
+    padding: 6px 8px;
+    height:200px;
+    width: 250px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
+
+.legend .circle {
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  margin-top: 8px;
+}
+
+.leaflet-popup-content-wrapper {
+  background:rgba(227,229,237,0.6);
+  color:#fff;
+  font-size:12px;
+  line-height:16px;
+   height: 200px;
+   width: 250px;
+    overflow: scroll;
+scrollbar-face-color: #ff8c00;
+scrollbar-track-color: #fff8dc;
+scrollbar-arrow-color: #ffffff;
+scrollbar-highlight-color: #fff8dc;
+scrollbar-shadow-color: #d2691e;
+scrollbar-3dlight-color: #ffebcd;
+scrollbar-darkshadow-color: #8b0000;
+  }
+
+.leaflet-popup-content {
+    color: black;
+    padding: 5;
+}
+
+
