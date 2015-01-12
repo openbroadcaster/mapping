@@ -1,5 +1,4 @@
 <?
-
 /*     
     Copyright 2012 OpenBroadcaster, Inc.
 
@@ -22,55 +21,58 @@
 class DeviceMapModule extends OBFModule
 {
 
-	public $name = 'Device Map';
-	public $description = 'Provide a map displaying location and status of OpenBroadcaster devices.';
+        public $name = 'Device Map';
+        public $description = 'Provide a map displaying location of EMS Alerts and status of OpenBroadcaster devices.';
 
-	public function callbacks()
-	{
+        public function callbacks()
+        {
 
-	}
-	public function install()
-	{
-/*
-		$this->db->query('CREATE TABLE IF NOT EXISTS `module_devicemap` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `device_id` int(10) unsigned NOT NULL,
-  `coords` POINT NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;');
-*/
-                $this->db->query('ALTER TABLE devices ADD COLUMN(`lng` decimal(8,5) NOT NULL DEFAULT -134.25921)');
-                $this->db->query('ALTER TABLE devices ADD COLUMN(`lat` decimal(8,5) NOT NULL DEFAULT 60.29280)');
-                $this->db->query('UPDATE devices SET lng=-134.2592146, lat=60.2928019');
-		$data = array();
-		$data['name'] = 'view_devicemap';
-		$data['description'] = 'view map produced by device map module';
-		$data['category'] = 'devices';
-	
-		$this->db->insert('users_permissions',$data);
+        }
+        public function install()
+        {
+        $this->db->query('CREATE TABLE IF NOT EXISTS `module_map_bases` (
+          `baselayer` varchar(255) NOT NULL,
+          PRIMARY KEY (`baselayer`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;');
 
-                $data = array();
-                $data['name'] = 'edit_devicemap';
-                $data['description'] = 'edit map produced by device map module';
-                $data['category'] = 'devices';
+        $this->db->query('CREATE TABLE `module_device_map` (
+          `device_id` int(10) unsigned NOT NULL,
+          `device_coords` point NOT NULL,
+          `zoomlevel` tinyint(4) NOT NULL,
+          `baselayer` varchar(255) NOT NULL,
+          PRIMARY KEY (`device_id`),
+          FOREIGN KEY fk_bases(`baselayer`) REFERENCES module_map_bases(baselayer)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;');
 
-                $this->db->insert('users_permissions',$data);
-		return true;
+        //View permission
+        $data = array();
+        $data['name'] = 'view_map';
+        $data['description'] = 'view map';
+        $data['category'] = 'device';
 
-	}
+        $this->db->insert('users_permissions',$data);
 
-	public function uninstall()
-	{
+        //Edit permission
+        $data = array();
+        $data['name'] = 'edit_map';
+        $data['description'] = 'edit map defaults';
+        $data['category'] = 'device';
 
-/*		$this->db->query('DROP TABLE  `module_devicemap`');
-*/
-		$this->db->query('ALTER TABLE devices DROP COLUMN `lng`');
-		$this->db->query('ALTER TABLE devices DROP COLUMN `lat`');
-		$this->db->where('name','view_devicemap');
-		$this->db->delete('users_permissions');
-		$this->db->where('name','edit_devicemap');
-		$this->db->delete('users_permissions');
-		return true;
+        $this->db->insert('users_permissions',$data);
+                        return true;
+        }
 
-	}
+        public function uninstall()
+        {
+
+        $this->db->query('DROP TABLE  `module_device_map`');
+        $this->db->query('DROP TABLE  `module_map_bases`');
+
+        $this->db->where('name','view_map');
+        $this->db->delete('users_permissions');
+        $this->db->where('name','edit_map');
+        $this->db->delete('users_permissions');
+        return true;
+
+        }
 }

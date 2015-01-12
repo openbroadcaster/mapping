@@ -12,15 +12,16 @@ display: block;
 border: 1px solid #0f0f0f;
 border-radius: 5px;
 padding: 2px;
-overflow: visible;
+overflow: hidden;
 }
 #map {
-	border-radius: 5px;
-	border:2px solid rgba(224,149,41,0.4);
-	box-shadow: 0 0 8px #999;
-	float:left;
-	width:70%;
-	height:99%;
+        border-radius: 5px;
+        border:2px solid rgba(224,149,41,0.4);
+        box-shadow: 0 0 8px #999;
+        float:left;
+        width:70%;
+        height:99%;
+     overflow:hidden;
 }
 .legend {
     padding: 4px 6px;
@@ -44,7 +45,7 @@ overflow: visible;
   margin: 2px 2px;
   border: 1px solid #666;
   float:left;
-  border-collapse: collapse; 
+  border-collapse: collapse;
   table-layout: fixed;
   overflow: scroll;
 
@@ -71,7 +72,7 @@ overflow: visible;
 }
 .legend tr {
    line-height:14px;
-} 
+}
 .legend td {
    padding-left: 5px;
 }
@@ -128,16 +129,16 @@ scrollbar-darkshadow-color: #8b0000;
 div.legend::-webkit-scrollbar {
     width: 10px;
 }
- 
+
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     -webkit-border-radius: 5px;
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-track:horizontal {
     height: 0px;
-    -webkit-box-shadow: inset 0 0 0px rgba(0,0,0,0.0); 
+    -webkit-box-shadow: inset 0 0 0px rgba(0,0,0,0.0);
     -webkit-border-radius: 5px;
     border-radius: 5px;
 }

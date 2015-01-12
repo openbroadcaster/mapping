@@ -20,9 +20,10 @@
 var ModuleDevicemap = new function()
 {
 
-	this.init_module = function()
-	{
-	$('#obmenu-admin').append('<li style="font-size:1.0em;">Plugins<ul><li data-permissions="view_devicemap"><a href="javascript: ModuleDevicemap.init_map();">Device Map</a></li></ul></li>');
+        this.init_module = function()
+        {
+        $('#obmenu-media').prepend('<li style="font-size:0.8em;" data-permissions="view_map"><a href="javascript: ModuleDevicemap.init_map();">ems alerts</a></li>');
+        $('#obmenu-admin li:nth-last-child(3)').append('<ul class="hidden" style="font-size:1.2em;" data-permissions="edit_map"><li><a href="javascript: ModuleDevicemap.init_map();"> Map Settings</a></li></ul>');
 
 //static leaflet files placed in js and css directories
 /*
