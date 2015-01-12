@@ -152,7 +152,18 @@ var overlays = {
 
 var layerControl = L.control.layers(bases, overlays).addTo(map); 
 map.setView([64,-98],3);
-
+map.on('overlayremove', function(eventLayer){
+        if (eventLayer.name=='U.S.A. Alert Areas')
+          { $("#legendUSA").hide() }
+        else if (eventLayer.name=='CAP Alert Symbols')
+          { $("#legendCAN").hide() }
+});
+map.on('overlayadd', function(eventLayer){
+        if (eventLayer.name=='U.S.A. Alert Areas')
+          { $("#legendUSA").show() }
+        else if (eventLayer.name=='CAP Alert Symbols')
+          { $("#legendCAN").show() }
+});
 $.getJSON("../modules/device_map/includes/canleg.json",function(data) {
     for (var i = 0; i < data.length; i++) {
         drawRow(data[i]);
