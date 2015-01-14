@@ -1,5 +1,5 @@
 <?
-/*     
+/*
     Copyright 2012 OpenBroadcaster, Inc.
 
     This file is part of OpenBroadcaster Server.
@@ -30,19 +30,27 @@ class DeviceMapModule extends OBFModule
         }
         public function install()
         {
+
         $this->db->query('CREATE TABLE IF NOT EXISTS `module_map_bases` (
           `baselayer` varchar(255) NOT NULL,
           PRIMARY KEY (`baselayer`)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;');
 
         $this->db->query('CREATE TABLE `module_device_map` (
-          `device_id` int(10) unsigned NOT NULL,
-          `device_coords` point NOT NULL,
-          `zoomlevel` tinyint(4) NOT NULL,
+                  `device_id` int(10) unsigned NOT NULL,
+                  `zoomlevel` tinyint(4) NOT NULL DEFAULT "3",
           `baselayer` varchar(255) NOT NULL,
-          PRIMARY KEY (`device_id`),
-          FOREIGN KEY fk_bases(`baselayer`) REFERENCES module_map_bases(baselayer)
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;');
+                  `latitude` float NOT NULL DEFAULT "60.246",
+                  `longitude` float NOT NULL DEFAULT "-134.531",
+                  PRIMARY KEY (`device_id`),
+                  KEY `module_device_map_ibfk_1` (`baselayer`),
+                CONSTRAINT `module_device_map_ibfk_1` FOREIGN KEY (`baselayer`) REFERENCES `module_map_bases` (`baselayer`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8;');
+                
+ 
+        $this->db->query('INSERT INTO obs.module_map_bases (baselayer) VALUES ("OSMBase")');
+        $this->db->query('INSERT INTO obs.module_device_map (device_id,baselayer) SELECT devices.id,"OSMBase" from devices;');
+
 
         //View permission
         $data = array();

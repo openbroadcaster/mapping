@@ -19,11 +19,10 @@
 
 var ModuleDevicemap = new function()
 {
-
-        this.init_module = function()
-        {
-        $('#obmenu-media').prepend('<li style="font-size:0.8em;" data-permissions="view_map"><a href="javascript: ModuleDevicemap.init_map();">ems alerts</a></li>');
-        $('#obmenu-admin li:nth-last-child(3)').append('<ul class="hidden" style="font-size:1.2em;" data-permissions="edit_map"><li><a href="javascript: ModuleDevicemap.init_map();"> Map Settings</a></li></ul>');
+this.init_module = function()
+	{
+	$('#obmenu-media').prepend('<li style="font-size:0.8em;" data-permissions="view_map"><a href="javascript: ModuleDevicemap.init_map();">ems alerts</a></li>');
+	$('#obmenu-admin li:nth-last-child(3)').append('<ul class="hidden" style="font-size:1.2em;" data-permissions="edit_map"><li><a href="javascript: ModuleDevicemap.init_map();"> Map Settings</a></li></ul>');
 
 //static leaflet files placed in js and css directories
 /*
@@ -44,12 +43,12 @@ var ModuleDevicemap = new function()
        script.setAttribute('type', 'text/javascript');
        script.setAttribute('src', 'http://leaflet.github.io/Leaflet.draw/leaflet.draw.js');
        document.getElementsByTagName('head')[0].appendChild(script);
- 
+/* 
            var script = document.createElement('script');
        script.setAttribute('type', 'text/javascript');
        script.setAttribute('src', '../junk/js/leaflet-realtime.js');
        document.getElementsByTagName('head')[0].appendChild(script);
-
+*/
            var script = document.createElement('script');
        script.setAttribute('type', 'text/javascript');
        script.setAttribute('src', 'http://maps.stamen.com/js/tile.stamen.js?v1.2.3');
@@ -59,9 +58,11 @@ var ModuleDevicemap = new function()
        script.setAttribute('type', 'text/javascript');
        script.setAttribute('src', 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js');
        document.getElementsByTagName('head')[0].appendChild(script);
-*/  
+*/ 
+
      }	
-	this.init_map =  function()
+
+this.init_map =  function()
 	{
 	
 $('#layout_main').html(html.get('modules/device_map/devicemap.html'));
@@ -82,7 +83,7 @@ $('#layout_main').html(html.get('modules/device_map/devicemap.html'));
              var marker = new L.Marker(ctr, {icon:smallIcon});
              marker.bindPopup(popCon);
              markerLayer.addLayer(marker);
-             markerLayer.addTo(map);
+//             markerLayer.addTo(map);
 		};
 
 var naadStyle = {
@@ -106,14 +107,38 @@ var OSMBase = L.tileLayer(
          var toner= new  L.StamenTileLayer("toner");
                     
 var map = L.map('map',{layers:[toner,watercolor, OSMBase],attributionControl:false}).setView([60.2928,-134.25921], 13);
-var markerLayer = new L.layerGroup();
+var modis24 = L.tileLayer.wms('https://firms.modaps.eosdis.nasa.gov/wms/?', {
+		format: 'img/png',
+		version: '1.1.1',
+		transparent: false,
+		layers: 'fires24',
+		crs: L.CRS.EPSG4326,
+		reuseTiles: true 
+		}).addTo(map);
+
+var modis48 = L.tileLayer.wms('https://firms.modaps.eosdis.nasa.gov/wms/?', {
+		format: 'img/png',
+		version: '1.1.1',
+		transparent: false,
+		layers: 'fires48',
+		crs: L.CRS.EPSG4326,
+		reuseTiles: true 
+		}).addTo(map);
+
+var usalert = L.tileLayer.wms('http://216.38.80.5/arcgis/services/watchwarn/MapServer/WmsServer?', {
+		format: 'img/png',
+		transparent: true,
+		layers: 0,
+		reuseTiles: true 
+		}).addTo(map);
+
 
 var alerts = L.realtime({
 	url: '../modules/device_map/includes/alerts.json',
 	crossOrign: false,
 	type: 'json',
        },{
-	interval: 60 * 1000,
+	interval: 300 * 1000,
 	style: function (feature) {
 	if (feature.properties.category[6].term != "urgency=Past")
 	 {
@@ -129,40 +154,27 @@ var alerts = L.realtime({
                     && feature.properties.category[0].term != "status=Test"
 //                    && feature.properties.category[6].term != "urgency=Past"
         ;}
-         }).addTo(map);
-alerts.on('update', function() {
-//map.fitBounds(alerts.getBounds(), {maxZoom: 3});
-});
-var usalert = L.tileLayer.wms('http://gis.srh.noaa.gov/arcgis/services/watchwarn/MapServer/WMSServer', {
-		format: 'img/png',
-		transparent: true,
-		layers: 0,
-		reuseTiles: true 
-		}).addTo(map);
+         });
+markerLayer.addLayer(alerts);
+markerLayer.addTo(map);
 var bases = {
             "Watercolor":watercolor,
             "Contrast":toner,
             "OpenStreetMap": OSMBase
              };
 var overlays = {
-	"Canada Alert Areas" : alerts,
-        "CAP Alert Symbols" : markerLayer,
-        "U.S.A. Alert Areas": usalert
+//	"Canada Alert Areas" : alerts,
+        "NAAD Alerts (CAN)" : markerLayer,
+        "MODIS Fires - Past 24h" : modis24,
+        "MODIS Fires - Past 48h" : modis48,
+        "NOAA Alerts (USA)": usalert
 	};
 
 var layerControl = L.control.layers(bases, overlays).addTo(map); 
 map.setView([64,-98],3);
-map.on('overlayremove', function(eventLayer){
-        if (eventLayer.name=='U.S.A. Alert Areas')
-          { $("#legendUSA").hide() }
-        else if (eventLayer.name=='CAP Alert Symbols')
-          { $("#legendCAN").hide() }
-});
-map.on('overlayadd', function(eventLayer){
-        if (eventLayer.name=='U.S.A. Alert Areas')
-          { $("#legendUSA").show() }
-        else if (eventLayer.name=='CAP Alert Symbols')
-          { $("#legendCAN").show() }
+
+alerts.on('update', function() {
+//map.fitBounds(alerts.getBounds(), {maxZoom: 3});
 });
 $.getJSON("../modules/device_map/includes/canleg.json",function(data) {
     for (var i = 0; i < data.length; i++) {
@@ -189,7 +201,19 @@ $.getJSON("../modules/device_map/includes/usaleg.json",function(data) {
 		}
 });
 
-var credits = L.control.attribution({position: 'bottomleft'}).addTo(map);
+map.on('overlayremove', function(eventLayer){
+	if (eventLayer.name=='NOAA Alerts (USA)')
+	  { $("#legendUSA").hide() } 
+	else if (eventLayer.name=='NAAD Alerts (CAN)')
+	  { $("#legendCAN").hide() }
+});
+map.on('overlayadd', function(eventLayer){
+	if (eventLayer.name=='NOAA Alerts (USA)')
+	  { $("#legendUSA").show() } 
+	else if (eventLayer.name=='NAAD Alerts (CAN)')
+	  { $("#legendCAN").show() }
+});
+// var credits = L.control.attribution({position: 'bottomleft'}).addTo(map);
 var naadLink= '<a href="http://rss1.naad-adna.pelmorex.com">NAAD GeoRSS</a>';
 var noaaLink= '<a href="http://gis.srh.noaa.gov/arcgis/services/watchwarn/MapServer/WMSServer?request=GetCapabilities&service=WMS">NOAA WMS</a>';
 credits.addAttribution('&#124; ' + naadLink + ' &#124; ' + noaaLink);
@@ -202,6 +226,3 @@ $(document).ready(function() {
 	ModuleDevicemap.init_module();
 
 });
-
-
-

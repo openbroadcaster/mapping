@@ -22,30 +22,78 @@
 class DevicemapModel extends OBFModel
 {
   
-    public function save_new_location($data, $id=false)
+  public function get_one($id)
   {
-  if($id){
-    $device_lat = $data['lat'];
-    $device_lng = $data['lng'];
 
-      $this->db->where('id',$id);
-      $update = $this->db->update('devices',$data);
-      if(!$update) return false;
+    $this->db->where('device_id',$id);
+    $devicemap = $this->db->get_one('module_device_map');
+   
+    if($devicemap) {
+      $devicemap['device']=$this('get_device',$id);  
     }
-    return true;
+
+    return $devicemap;
 
   }
-    public function validate($data,$id=false)
+
+  public function get_all()
+  {
+    return $this->db->get('module_device_map');
+  }
+
+  public function get($params)
   {
 
-    $error = false;
+    foreach($params as $name=>$value) $$name=$value;
 
-    if(empty($data['position'])) $error = 'A device position is required.';
+    if($filters) foreach($filters as $filter)
+    {
+      $column = $filter['column'];
+      $value = $filter['value'];
+      $operator = (empty($filter['operator']) ? '=' : $filter['operator']);
 
-    elseif($id && !$this->db->id_exists('devices',$id)) $error = 'The device you are attempted to edit does not exist.';
+      $this->db->where($column,$value,$operator);
+    }
+
+    if($orderby) $this->db->orderby($orderby,(!empty($orderdesc) ? 'desc' : 'asc'));
+
+    if($limit) $this->db->limit($limit);
+
+    if($offset) $this->db->offset($offset);
+
+    $result = $this->db->get('module_device_map');
+
+    if($result === false) return false;
   
-    if($error) return array(false,$error);
+    return $result;
 
-    return array(true,'');
   }
+
+  // get a device.
+  public function get_device($id)
+  {
+
+    $this->db->where('id',$id);
+    $device = $this->db->get('devices');
+
+    return $device;
+
   }
+
+public function save($data,$id=false)
+  {
+    if($id)
+	{
+
+      $this->db->where('device_id',$id);
+      $update = $this->db->update('module_device_map',$data);
+
+      if(!$update) return false;
+	}
+	else
+	{ return false;
+	}
+	return true;
+  }
+  
+}
