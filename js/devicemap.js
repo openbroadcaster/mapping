@@ -75,12 +75,13 @@ function recentActive(lastconnect) {
 }  
 
 function onEachDevice(feature, layer) {
-
+/*
     if(recentActive(feature.properties.last_connect_emergency))
                 { curStatus = 'emergency';
                 var popupContent = "<h1 style='color:red'>" + feature.properties.title + "</h1><h2 style='color:red'>EMERGENCY BROADCAST</h2>";
 
                 } else {
+  */
         var last_connect = !isNaN(feature.properties.last_connect) ? format_timestamp(feature.properties.last_connect) : '<i>never</i>';
         var last_connect_schedule = !isNaN(feature.properties.last_connect_schedule) ? format_timestamp(feature.properties.last_connect_schedule) : '<i>never</i>';
         var last_connect_playlog = !isNaN(feature.properties.last_connect_playlog) ? format_timestamp(feature.properties.last_connect_playlog) : '<i>never</i>';
@@ -99,7 +100,7 @@ function onEachDevice(feature, layer) {
         if (feature.properties && feature.properties.popupContent) {
                 popupContent += feature.properties.popupContent;
         }
-     }
+//     }
                 layer.bindPopup(popupContent);
 };
 
@@ -112,12 +113,13 @@ var emergencyIcon = new ObsIcon({
         })
 ;
 function deviceToMarker(feature,latlng){
-	if (recentActive(feature.properties.last_connect_emergency))
+/*	if (recentActive(feature.properties.last_connect_emergency))
 		{
 		curIcon = emergencyIcon; 
 		} else {  
+*/
 		curIcon = curIcon; 
-		}
+//		}
 
                 marker = new L.marker(latlng,{'icon':curIcon});
                 return marker;
