@@ -1,0 +1,85 @@
+<h1>Media Settings</h1>
+
+<h2 class="tmargin">Media Categories & Genres</h2>
+
+<p>Click on a category name to show the genres within that category.</p>
+
+<p><a href="javascript:media.category_addedit_window();">Add a Category</a> | <a href="javascript:media.genre_addedit_window();">Add a Genre</a></p>
+
+<table class="data_table tmargin">
+<tbody id="media_categories">
+</tbody>
+</table>
+
+<h2 class="tmargin">Supported File Formats</h2>
+
+<p>Select which file formats you wish to accept for media uploads.  Changing this setting will not affect existing media.</p>
+
+<p class="hidden messagebox" id="formats_messagebox"></p>
+
+<table class="form_table">
+<tr>
+  <th colspan="2">Audio Formats</th>
+</tr>
+<tr>
+  <td><input value="flac" type="checkbox" class="audio_formats" name="audio_formats"></td>
+  <td>FLAC (Free Lossless Audio Codec)</td>
+</tr>
+<tr>
+  <td><input value="mp3" type="checkbox" class="audio_formats" name="audio_formats"></td>
+  <td>MP3 (MPEG-1 Layer-3 Audio)</td>
+</tr>
+<tr>
+  <td><input value="mp4" type="checkbox" class="audio_formats" name="audio_formats"></td>
+  <td>MP4 (MPEG-4 Audio)</td>
+</tr>
+<tr>
+  <td><input value="ogg" type="checkbox" class="audio_formats" name="audio_formats"></td>
+  <td>Ogg Container Format</td>
+</tr>
+<tr>
+  <td><input value="wav" type="checkbox" class="audio_formats" name="audio_formats"></td>
+  <td>WAV (Waveform Audio)</td>
+</tr>
+<tr>
+  <th colspan="2">Video Formats</th>
+</tr>
+<tr>
+  <td><input value="avi" type="checkbox" class="video_formats" name="video_formats"></td>
+  <td>AVI (Audio Video Interleave, container format)</td>
+</tr>
+<tr>
+  <td><input value="mpg" type="checkbox" class="video_formats" name="video_formats"></td>
+  <td>MPEG (Moving Picture Experts Group)</td>
+</tr>
+<tr>
+  <td><input value="ogg" type="checkbox" class="video_formats" name="video_formats"></td>
+  <td>Ogg Container Format</td>
+</tr>
+<tr>
+  <th colspan="2">Image Formats</th>
+</tr>
+<tr>
+  <td><input value="jpg" type="checkbox" class="image_formats" name="image_formats"></td>
+  <td>JPEG (Joint Photographic Experts Group)</td>
+</tr>
+<tr>
+  <td><input value="png" type="checkbox" class="image_formats" name="image_formats"></td>
+  <td>PNG (Portable Network Graphics)</td>
+</tr>
+<tr>
+  <td><input value="svg" type="checkbox" class="image_formats" name="image_formats"></td>
+  <td>SVG (Scalable Vector Graphics)</td>
+</tr>
+<tr>
+  <th colspan="2">Map Formats</th>
+</tr>
+<tr>
+  <td><input value="dbf" type="checkbox" class="image_formats" name="map_formats"></td>
+  <td>DBF (XBase format)</td>
+</tr>
+<tr>
+  <td>&nbsp;</td>
+  <td class="submit"><input type="button" value="Save Format Settings" onclick="media.formats_save();"></td>
+</tr>
+</table>

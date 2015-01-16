@@ -1,0 +1,172 @@
+<!DOCTYPE html>  
+<html>
+<head>
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+<link rel="stylesheet" href="../css/devicemap.css" />
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+<script src='http://code.jquery.com/jquery-1.8.2.min.js'></script>
+<script src='../../../js/common.js'></script>
+        <style type="text/css">
+                html, body {height: 100%;overflow: hidden;}
+                #map {height: 100%;}
+        </style>
+</head>
+<body>
+        <div id="map"></div>
+        <script>
+function recentActive(lastconnect) {
+	var nowMinus1H = Math.round((new Date()).getTime()/1000);
+	if(isNaN(lastconnect)){return false;} else {var dateToTest = lastconnect};
+	var diffMinutes = Math.round( (dateToTest  - nowMinus1H )/60/60)
+	if (isNaN(diffMinutes)) {return false};
+	if (diffMinutes > -1000) {return true} else {return false};	
+}    
+  
+function onEachFeature(feature, layer) {
+		var ic;
+ 		switch(feature.properties.icon_value) {
+					case 0: ic = 'none'; break;
+					case 1: ic = 'Digital Signage'; break;
+					case 2: ic = 'CATV Channel'; break;
+                    case 4:  ic = 'Radio Transmitter';break;
+					case 6: ic = 'TV Transmitter'; break;
+					case 7: ic= 'CATV Channel'; break;
+					default: ic = 'other';
+                }
+                
+		var last_connect = !isNaN(feature.properties.last_connect) ? format_timestamp(feature.properties.last_connect) : '<i>never</i>';
+		var last_connect_schedule = !isNaN(feature.properties.last_connect_schedule) ? format_timestamp(feature.properties.last_connect_schedule) : '<i>never</i>';
+		var last_connect_playlog = !isNaN(feature.properties.last_connect_playlog) ? format_timestamp(feature.properties.last_connect_playlog) : '<i>never</i>';
+		var last_connect_media = !isNaN(feature.properties.last_connect_media) ? format_timestamp(feature.properties.last_connect_media) : '<i>never</i>';
+		var last_connect_emergency = !isNaN(feature.properties.last_connect_emergency) ? format_timestamp(feature.properties.last_connect_emergency) : '<i>never</i>';
+		if (recentActive(feature.properties.last_connect)){var curStatus='active'} else {var curStatus='inactive'};
+		var popupContent = "<p>" + feature.properties.title + "<ul>" +
+			"<li>Last Connect: " + last_connect + "</li>" +
+			"<li>Last Schedule: " + last_connect_schedule + "</li>" +
+			"<li>Last Playlog: " + last_connect_playlog + "</li>" +
+			"<li>Last Media: " + last_connect_media + "</li>" +
+			"<li>Last Emergency: " + last_connect_emergency + "</li>" + 
+			"<li>Version: " + feature.properties.version + "</li>" +
+			"<li>Location: " + feature.geometry.coordinates[0] + "," + feature.geometry.coordinates[1] + "</li>" +
+			"<li>Current Status: " + curStatus + "</li>" + 
+			"<li>Icon Type: " + ic  + "</li><ul></p>";	
+		if (feature.properties && feature.properties.popupContent) {
+			popupContent += feature.properties.popupContent;
+		}
+			layer.bindPopup(popupContent);
+};
+	function highlightPoly(e){
+			map.addLayer(e.target);
+}
+	function unhighlightPoly (e){
+			map.removeLayer(e.target);
+}
+        var naadStyle = {
+            color: "#2262CC",
+            weight: 0,
+            opacity: 0.1,
+            fillOpacity: 0.1,
+            fillColor: "#CC2247"
+        };
+
+	    var ObsIcon_sm = L.Icon.extend({
+		options: {
+			shadowUrl: 
+			    '../css/images/icon-shadow.png',
+			iconSize:     [32,32],
+			shadowSize:   [50,32],
+			iconAnchor:   [16,32],
+			shadowAnchor: [5,32],
+			popupAnchor:  [-1, -35]
+			}
+		});
+	    var ObsIcon = L.Icon.extend({
+		options: {
+			iconSize:     [32,32],
+			shadowSize:   [33,26],
+			iconAnchor:   [16,32],
+			shadowAnchor: [5,25],
+			popupAnchor:  [-1,-35]
+			}
+		});
+		var defaultIcon = new ObsIcon({
+			iconUrl: '../css/images/device_default.png',
+			});
+		var DigitalSignageIcon = new ObsIcon({
+                        iconUrl: '../css/images/device_digitv.png',
+                        }); 
+		var CATVChannelIcon = new ObsIcon({
+			iconUrl: '../css/images/device_catv.png',
+			});
+		var TVTransmitterIcon = new ObsIcon_sm({
+			iconUrl: '../css/images/device_tv.png',
+			});
+		var RadioTransmitterIcon = new ObsIcon({
+			iconUrl: '../css/images/device_radio.png',
+			});
+        //var map = new L.Map('map');		 
+	var map = new L.Map('map').setView([60.2928,-134.25921], 13);
+        var mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+	var markerLayer = new L.layerGroup();
+        var OSMBase = L.tileLayer(
+            'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; ' + mapLink + ' Contributors',
+            maxZoom: 18,
+            }).addTo(map);
+        $.getJSON("../includes/alerts.json",function (data) {
+                var alerts = L.geoJson(data, {
+                        onEachFeature: function(feature,layer){
+                        if (feature.properties) {
+                           var popCon;
+                           popCon = "<p>" + feature.properties.title + "</p>";
+                           popCon =  popCon + "<a href=" + feature.properties.link.href + ">Link</a>\n";
+                           popCon = popCon + "<p>" + feature.properties.summary.content + "</p>";
+
+                           for (i=0;i<feature.properties.category.length;i=i+1){
+                                var catstring = "<p>"+feature.properties.category[i].term + "</p>";
+                                popCon = popCon+catstring;
+                                }
+                        }
+                 layer.bindPopup(popCon);
+                 var ctr = layer.getBounds().getCenter();
+                 var smallIcon = L. icon({iconUrl:feature.properties.iconURL, iconSize:[32,32]});
+                 var marker = new L.Marker(ctr, {icon:smallIcon});
+                     marker.bindPopup(popCon);
+                     markerLayer.addLayer(marker);
+                     },
+                filter: function(feature, layer) {
+                 return feature.properties.category[3].term == "language=en-CA" && feature.properties.category[0].term != "status=Test";
+                 }
+                }).addTo(map);
+
+                alerts.setStyle(naadStyle);
+                markerLayer.addTo(map);
+                map.fitBounds(alerts.getBounds());
+        });
+        
+	$.getJSON("../devices_geojson.php",function (data) {
+
+		var devices = L.geoJson(data,{
+				onEachFeature: onEachFeature,
+				pointToLayer: function (feature, latlng) {
+				switch(feature.properties.icon_value){
+				case 0: curIcon = defaultIcon; break;
+				case 1: curIcon = DigitalSignageIcon; break;
+				case 2: curIcon = CATVChannelIcon; break;
+				case 4: curIcon = RadioTransmitterIcon; break;
+				case 6: curIcon = TVTransmitterIcon; break;
+				case 7: curIcon = CATVChannelIcon; break; 
+				default: curIcon = defaultIcon; break;
+				}
+				marker = new L.marker(latlng,{'icon':curIcon});
+				return marker;
+				}
+			}).addTo(map);
+//        map.fitBounds(devices.getBounds());
+	});
+
+</script>
+</body>
+</html>
+
+

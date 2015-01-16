@@ -1,0 +1,294 @@
+/*     
+    Copyright 2012 OpenBroadcaster, Inc.
+
+    This file is part of OpenBroadcaster Server.
+
+    OpenBroadcaster Server is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    OpenBroadcaster Server is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with OpenBroadcaster Server.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+var ModuleDevicemap = new function()
+{
+this.init_module = function()
+	{
+	$('#obmenu-media').prepend('<li style="font-size:0.8em;" data-permissions="view_map"><a href="javascript: ModuleDevicemap.init_map();">ems alerts</a></li>');
+	$('#obmenu-admin').append('<li  style="font-size:0.8em;" data-permissions="edit_map"><a href="javascript: ModuleDevicemap.init_map();"> Map Settings</a></li>');
+
+//static leaflet files placed in js and css directories
+/*
+	   var file = document.createElement('link');
+       file.setAttribute('rel', 'stylesheet');
+       file.setAttribute('type', 'text/css');
+       file.setAttribute('href', 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css');
+       document.getElementsByTagName('head')[0].appendChild(file);
+*/
+ 
+           var file = document.createElement('link');
+       file.setAttribute('rel', 'stylesheet');
+       file.setAttribute('type', 'text/css');
+       file.setAttribute('href', 'http://leaflet.github.io/Leaflet.draw/leaflet.draw.css');
+       document.getElementsByTagName('head')[0].appendChild(file);
+
+           var script = document.createElement('script');
+       script.setAttribute('type', 'text/javascript');
+       script.setAttribute('src', 'http://leaflet.github.io/Leaflet.draw/leaflet.draw.js');
+       document.getElementsByTagName('head')[0].appendChild(script);
+/* 
+           var script = document.createElement('script');
+       script.setAttribute('type', 'text/javascript');
+       script.setAttribute('src', '../junk/js/leaflet-realtime.js');
+       document.getElementsByTagName('head')[0].appendChild(script);
+*/
+           var script = document.createElement('script');
+       script.setAttribute('type', 'text/javascript');
+       script.setAttribute('src', 'http://maps.stamen.com/js/tile.stamen.js?v1.2.3');
+       document.getElementsByTagName('head')[0].appendChild(script);
+/*
+           var script = document.createElement('script');
+       script.setAttribute('type', 'text/javascript');
+       script.setAttribute('src', 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js');
+       document.getElementsByTagName('head')[0].appendChild(script);
+*/ 
+
+     }	
+
+this.init_map =  function()
+	{
+	
+$('#layout_main').html(html.get('modules/device_map/devicemap.html'));
+function recentActive(lastconnect) {
+        var nowMinus1H = Math.round((new Date()).getTime()/1000);
+        if(isNaN(lastconnect)){return false;} else {var dateToTest = lastconnect};
+        var diffMinutes = Math.round( (dateToTest  - nowMinus1H )/60/60)
+        if (isNaN(diffMinutes)) {return false};
+        if (diffMinutes > -1000) {return true} else {return false};     
+}  
+
+function onEachDevice(feature, layer) {
+
+    if(recentActive(feature.properties.last_connect_emergency))
+                { curStatus = 'emergency';
+                var popupContent = "<h1 style='color:red'>" + feature.properties.title + "</h1><h2 style='color:red'>EMERGENCY BROADCAST</h2>";
+
+                } else {
+        var last_connect = !isNaN(feature.properties.last_connect) ? format_timestamp(feature.properties.last_connect) : '<i>never</i>';
+        var last_connect_schedule = !isNaN(feature.properties.last_connect_schedule) ? format_timestamp(feature.properties.last_connect_schedule) : '<i>never</i>';
+        var last_connect_playlog = !isNaN(feature.properties.last_connect_playlog) ? format_timestamp(feature.properties.last_connect_playlog) : '<i>never</i>';
+        var last_connect_media = !isNaN(feature.properties.last_connect_media) ? format_timestamp(feature.properties.last_connect_media) : '<i>never</i>';
+        var last_connect_emergency = !isNaN(feature.properties.last_connect_emergency) ? format_timestamp(feature.properties.last_connect_emergency) : '<i>never</i>';
+        if (recentActive(feature.properties.last_connect)){var curStatus='active'} else {var curStatus='inactive'};
+        var popupContent = feature.properties.title + "<ul>" +
+         "<li>Last Connect: " + last_connect + "</li>" +
+         "<li>Last Schedule: " + last_connect_schedule + "</li>" +
+         "<li>Last Playlog: " + last_connect_playlog + "</li>" +
+         "<li>Last Media: " + last_connect_media + "</li>" +
+         "<li style='font-color:red'>Last Emergency: " + last_connect_emergency + "</li>" + 
+         "<li>Version: " + feature.properties.version + "</li>" +
+         "<li>Location: " + feature.geometry.coordinates[0] + "," + feature.geometry.coordinates[1] + "</li>" +
+         "<li>Current Status: " + curStatus + "</li>";  
+        if (feature.properties && feature.properties.popupContent) {
+                popupContent += feature.properties.popupContent;
+        }
+     }
+                layer.bindPopup(popupContent);
+};
+
+var curIcon = new ObsIcon({
+        iconUrl: './modules/device_map/css/images/icons/black/broadcast.png',
+        })
+;
+var emergencyIcon = new ObsIcon({
+        iconUrl: './modules/device_map/css/images/icons/red/broadcast.png',
+        })
+;
+function deviceToMarker(feature,latlng){
+	if (recentActive(feature.properties.last_connect_emergency))
+		{
+		curIcon = emergencyIcon; 
+		} else {  
+		curIcon = curIcon; 
+		}
+
+                marker = new L.marker(latlng,{'icon':curIcon});
+                return marker;
+};
+
+	function onEachFeature(feature, layer) {
+	  if (feature.properties) {
+                 var popCon;
+                     popCon = "<h4>"  + feature.properties.title.toUpperCase() + "</h4>";
+                     popCon =  popCon + "<a href=" + feature.properties.link.href + "> (LINK TO SOURCE)</a><br>";
+                     popCon = popCon + feature.properties.summary.content ;
+                }
+             layer.bindPopup(popCon);
+             var ctr = layer.getBounds().getCenter();
+             var smallIcon = L. icon(
+				{iconUrl:feature.properties.iconURL, 
+				 iconSize: [16,16]
+				});
+             var marker = new L.Marker(ctr, {icon:smallIcon});
+             marker.bindPopup(popCon);
+             markerLayer.addLayer(marker);
+//             markerLayer.addTo(map);
+		};
+
+var naadStyle = {
+		color: "#2262CC",
+		weight: 0,
+		opacity: 0.1,
+		fillOpacity: 0.1,
+		fillColor: "#CC2247"
+	};	    
+	  
+
+var mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+var markerLayer = new L.layerGroup();
+var OSMBase = L.tileLayer(
+		'https://{s}.tiles.mapbox.com/v3/geoprism.h4g8f1k5/{z}/{x}/{y}.png', {
+		attribution: '&copy; ' + mapLink ,
+		maxZoom: 18
+		});
+
+         var watercolor = new  L.StamenTileLayer("watercolor");
+         var toner= new  L.StamenTileLayer("toner");
+                    
+var map = L.map('map',{layers:[toner,watercolor, OSMBase],attributionControl:false}).setView([60.2928,-134.25921], 13);
+var modis24 = L.tileLayer.wms('https://firms.modaps.eosdis.nasa.gov/wms/?', {
+		format: 'img/png',
+		version: '1.1.1',
+		transparent: false,
+		layers: 'fires24',
+		crs: L.CRS.EPSG4326,
+		reuseTiles: true 
+		}).addTo(map);
+
+var modis48 = L.tileLayer.wms('https://firms.modaps.eosdis.nasa.gov/wms/?', {
+		format: 'img/png',
+		version: '1.1.1',
+		transparent: false,
+		layers: 'fires48',
+		crs: L.CRS.EPSG4326,
+		reuseTiles: true 
+		}).addTo(map);
+
+var usalert = L.tileLayer.wms('http://216.38.80.5/arcgis/services/watchwarn/MapServer/WmsServer?', {
+		format: 'img/png',
+		transparent: true,
+		layers: 0,
+		reuseTiles: true 
+		}).addTo(map);
+
+
+var alerts = L.realtime({
+	url: '../modules/device_map/includes/alerts.json',
+	crossOrign: false,
+	type: 'json',
+       },{
+	interval: 300 * 1000,
+	style: function (feature) {
+	if (feature.properties.category[6].term != "urgency=Past")
+	 {
+	 return {color: "#2262CC", weight: 0, opacity: 0.1, fillOpacity: 0.1, fillColor: "#CC2247"} 
+         } else 
+         { 
+         return {color: "#2262CC", weight: 0, opacity: 0.1, fillOpacity: 0.1, fillColor: "#0f0f0f"} 
+	 }
+	}, 
+       onEachFeature: onEachFeature,
+         filter: function(feature, layer) {
+             return feature.properties.category[3].term == "language=en-CA"
+                    && feature.properties.category[0].term != "status=Test"
+//                    && feature.properties.category[6].term != "urgency=Past"
+        ;}
+         });
+markerLayer.addLayer(alerts);
+markerLayer.addTo(map);
+var bases = {
+            "Watercolor":watercolor,
+            "Contrast":toner,
+            "OpenStreetMap": OSMBase
+             };
+var overlays = {
+//	"Canada Alert Areas" : alerts,
+        "NAAD Alerts (CAN)" : markerLayer,
+        "MODIS Fires - Past 24h" : modis24,
+        "MODIS Fires - Past 48h" : modis48,
+        "NOAA Alerts (USA)": usalert
+	};
+
+var layerControl = L.control.layers(bases, overlays).addTo(map); 
+map.setView([64,-98],3);
+
+alerts.on('update', function() {
+//map.fitBounds(alerts.getBounds(), {maxZoom: 3});
+});
+
+$.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
+                var devices = L.geoJson(data, {
+                onEachFeature: onEachDevice,
+                pointToLayer: deviceToMarker
+                }).addTo(map);
+});
+
+$.getJSON("../modules/device_map/includes/canleg.json",function(data) {
+    for (var i = 0; i < data.length; i++) {
+        drawRow(data[i]);
+    	}
+	function drawRow(rowData) {
+    	var row = $("<tr />")
+    	$("#legendCAN").append(row);
+    	row.append($("<td>" + rowData.label + "</td>"));
+    	row.append($("<td><img src='data:image/png;base64," + 
+    		rowData.imageData + "'></td>"));
+		}
+});
+$.getJSON("../modules/device_map/includes/usaleg.json",function(data) {
+    for (var i = 0; i < data.length; i++) {
+        drawRow(data[i]);
+    	}
+	function drawRow(rowData) {
+    	var row = $("<tr />")
+    	$("#legendUSA").append(row);
+    	row.append($("<td>" + rowData.label + "</td>"));
+    	row.append($("<td><img src='data:image/png;base64," + 
+    		rowData.imageData + "'></td>"));
+		}
+});
+
+map.on('overlayremove', function(eventLayer){
+	if (eventLayer.name=='NOAA Alerts (USA)')
+	  { $("#legendUSA").hide() } 
+	else if (eventLayer.name=='NAAD Alerts (CAN)')
+	  { $("#legendCAN").hide() }
+});
+map.on('overlayadd', function(eventLayer){
+	if (eventLayer.name=='NOAA Alerts (USA)')
+	  { $("#legendUSA").show() } 
+	else if (eventLayer.name=='NAAD Alerts (CAN)')
+	  { $("#legendCAN").show() }
+});
+
+//var credits = L.control.attribution({position: 'bottomleft'}).addTo(map);
+//var naadLink= '<a href="http://rss1.naad-adna.pelmorex.com">NAAD GeoRSS</a>';
+//var noaaLink= '<a href="http://gis.srh.noaa.gov/arcgis/services/watchwarn/MapServer/WMSServer?request=GetCapabilities&service=WMS">NOAA WMS</a>';
+//credits.addAttribution('&#124; ' + naadLink + ' &#124; ' + noaaLink);
+
+ } //end init_map
+
+}
+$(document).ready(function() {
+
+	ModuleDevicemap.init_module();
+
+});
+
