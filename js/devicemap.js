@@ -234,14 +234,18 @@ map.setView([64,-98],3);
 alerts.on('update', function() {
 //map.fitBounds(alerts.getBounds(), {maxZoom: 3});
 });
-
+var markers = L.markerClusterGroup();
 $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
                 var devices = L.geoJson(data, {
                 onEachFeature: onEachDevice,
                 pointToLayer: deviceToMarker
-                }).addTo(map);
+                });
+        markers.addLayer(devices);
+        map.addLayer(markers);
 });
-
+markers.on('clustermouseover', function (a) {
+        a.layer.spiderfy();
+        });   
 $.getJSON("../modules/device_map/includes/canleg.json",function(data) {
     for (var i = 0; i < data.length; i++) {
         drawRow(data[i]);
