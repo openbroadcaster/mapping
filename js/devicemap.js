@@ -270,7 +270,22 @@ $.getJSON("../modules/device_map/includes/usaleg.json",function(data) {
     		rowData.imageData + "'></td>"));
 		}
 });
-
+$("#hideLegend").click(function () {
+        $("#map").animate({width:"95%"},300,function(){
+        $("#hideLegend").hide();
+        $("#showLegend").show();
+        $("#legend").hide(200);
+        map.invalidateSize(true);
+        });
+});
+$("#showLegend").click(function() {
+        $("#map").animate({width:"68%"},300,function(){
+        $("#hideLegend").show();
+        $("#showLegend").hide();
+        $("#legend").show(200);
+        map.invalidateSize(true);
+        });
+});
 map.on('overlayremove', function(eventLayer){
 	if (eventLayer.name=='NOAA Alerts (USA)')
 	  { $("#legendUSA").hide() } 
@@ -288,7 +303,7 @@ map.on('overlayadd', function(eventLayer){
 //var naadLink= '<a href="http://rss1.naad-adna.pelmorex.com">NAAD GeoRSS</a>';
 //var noaaLink= '<a href="http://gis.srh.noaa.gov/arcgis/services/watchwarn/MapServer/WMSServer?request=GetCapabilities&service=WMS">NOAA WMS</a>';
 //credits.addAttribution('&#124; ' + naadLink + ' &#124; ' + noaaLink);
-
+$("#showLegend").hide();
  } //end init_map
 
 }
