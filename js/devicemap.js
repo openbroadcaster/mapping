@@ -122,8 +122,7 @@ function deviceToMarker(feature,latlng){
 //		}
 
         marker = new L.marker(latlng,{
-            'icon':curIcon,
-            tooltip:{html: feature.properties.title}
+            'icon':curIcon
             });
         return marker;
 };
