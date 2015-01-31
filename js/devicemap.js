@@ -236,11 +236,11 @@ $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
 		map.openPopup(popup);
 	});
 	oms.addListener('spiderfy', function(markers) {
-		for (var i = 0, len = markers.length; i < len; i ++) markers[i].setIcon(new lightIcon());
+		for (var i = 0, len = markers.length; i < len; i ++) markers[i].setIcon(lightIcon);
 		map.closePopup();
 	});
 	oms.addListener('unspiderfy', function(markers) {
-		for (var i = 0, len = markers.length; i < len; i ++) markers[i].setIcon(new darkIcon());
+		for (var i = 0, len = markers.length; i < len; i ++) markers[i].setIcon(darkIcon);
 	});
 
 $.getJSON("../modules/device_map/includes/canleg.json",function(data) {
