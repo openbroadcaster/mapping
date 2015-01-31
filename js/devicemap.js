@@ -199,9 +199,9 @@ alerts.on('update', function() {
 //map.fitBounds(alerts.getBounds(), {maxZoom: 3});
 });
 
-
+-141.0,59.99,-123.81,69.85
 var oms = new OverlappingMarkerSpiderfier(map);
-var bounds = new L.LatLngBounds([60.3,-134.3],[60.5,-134.0]);
+var bounds = new L.LatLngBounds([59.99,-141.0],[69.85,-123.81]);
 $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
 	var devices = L.geoJson(data, {
 		pointToLayer: function(feature,latlng){
