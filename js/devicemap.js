@@ -218,7 +218,7 @@ $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
 			 "<li>Last Media: " + last_connect_media + "</li>" +
 			 "<li>Version: " + feature.properties.version + "</li>" +
 			 "<li>Location: " + feature.geometry.coordinates[0] + "," + feature.geometry.coordinates[1] + "</li>" +
-		dmarker.desc = popupContent
+		dmarker.desc = popupContent;
 		map.addLayer(dmarker);
 		oms.addMarker(dmarker);
 		};
