@@ -123,7 +123,7 @@ var OSMBase = L.tileLayer(
          var toner= new  L.StamenTileLayer("toner");
                     
 var map = L.map('map',{layers:[toner,watercolor, OSMBase],attributionControl:false}).setView([60.2928,-134.25921], 13);
-/*
+
 var modis24 = L.tileLayer.wms('https://firms.modaps.eosdis.nasa.gov/wms/?', {
 		format: 'img/png',
 		version: '1.1.1',
@@ -148,7 +148,7 @@ var usalert = L.tileLayer.wms('http://216.38.80.5/arcgis/services/watchwarn/MapS
 		layers: 0,
 		reuseTiles: true 
 		}).addTo(map);
-*/
+
 
 var alerts = L.realtime({
 	url: '../modules/device_map/includes/alerts.json',
@@ -185,9 +185,9 @@ var precipitation  = L.OWM.precipitation({showLegend: false, opacity: 0.5});
 var overlays = {
 //	"Canada Alert Areas" : alerts,
         "NAAD Alerts (CAN)" : markerLayer,
-//        "MODIS Fires - Past 24h" : modis24,
-//        "MODIS Fires - Past 48h" : modis48,
-//        "NOAA Alerts (USA)": usalert,
+        "MODIS Fires - Past 24h" : modis24,
+        "MODIS Fires - Past 48h" : modis48,
+        "NOAA Alerts (USA)": usalert,
         "Clouds": clouds,
         "Snow": snow,
         "Precipitation": precipitation
