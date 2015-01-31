@@ -199,6 +199,8 @@ map.setView([60.2928018,-134.2592146],4);
 alerts.on('update', function() {
 //map.fitBounds(alerts.getBounds(), {maxZoom: 3});
 });
+var lightIcon = L.Icon.Default;
+var darkIcon  = L.Icon.Default.extend({options: {iconUrl: L.Icon.Default.imagePath + '/marker-desat.png'}});
 
 var oms = new OverlappingMarkerSpidefier(map);
 var bounds = new L.LatLngBounds();
@@ -206,8 +208,7 @@ $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
 	var devices = L.geoJson(data, {
 		pointToLayer: function(feature,latlng){
 			bounds.extend(latlng);
-			var dmarker = new L.Marker(latlng,{'icon':curIcon});
-			var last_connect = !isNaN(feature.properties.last_connect) ? format_timestamp(feature.properties.last_connect) : '<i>never</i>';
+        var dmarker = new L.Marker(latlng, {icon: new darkIcon()});			var last_connect = !isNaN(feature.properties.last_connect) ? format_timestamp(feature.properties.last_connect) : '<i>never</i>';
 			var last_connect_schedule = !isNaN(feature.properties.last_connect_schedule) ? format_timestamp(feature.properties.last_connect_schedule) : '<i>never</i>';
 			var last_connect_playlog = !isNaN(feature.properties.last_connect_playlog) ? format_timestamp(feature.properties.last_connect_playlog) : '<i>never</i>';
 			var last_connect_media = !isNaN(feature.properties.last_connect_media) ? format_timestamp(feature.properties.last_connect_media) : '<i>never</i>';
@@ -217,7 +218,7 @@ $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
 			 "<li>Last Playlog: " + last_connect_playlog + "</li>" +
 			 "<li>Last Media: " + last_connect_media + "</li>" +
 			 "<li>Version: " + feature.properties.version + "</li>" +
-			 "<li>Location: " + feature.geometry.coordinates[0] + "," + feature.geometry.coordinates[1] + "</li>" +
+			 "<li>Location: " + feature.geometry.coordinates[0] + "," + feature.geometry.coordinates[1] + "</li>" ;
 		dmarker.desc = popupContent;
 		map.addLayer(dmarker);
 		oms.addMarker(dmarker);
