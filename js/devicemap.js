@@ -103,14 +103,15 @@ var toner= new  L.StamenTileLayer("toner");
                     
 var map = L.map('map',{layers:[OSMBase,toner,watercolor],attributionControl:false}).setView([60.2928,-134.25921], 13);
 var credits = L.control.attribution({position: 'bottomleft'}).addTo(map);
-
+var modisLink = '<a href="http://earthdata.nasa.gov/data/nrt-data/firms">MODIS Hotspots:NASA</a>';
 var modis24 = L.tileLayer.wms('https://firms.modaps.eosdis.nasa.gov/wms/?', {
 		format: 'img/png',
 		version: '1.1.1',
 		transparent: false,
 		layers: 'fires24',
 		crs: L.CRS.EPSG4326,
-		reuseTiles: true 
+		reuseTiles: true,
+		attribution:  '&copy; ' + modisLink 
 		}).addTo(map);
 
 var modis48 = L.tileLayer.wms('https://firms.modaps.eosdis.nasa.gov/wms/?', {
@@ -119,7 +120,8 @@ var modis48 = L.tileLayer.wms('https://firms.modaps.eosdis.nasa.gov/wms/?', {
 		transparent: false,
 		layers: 'fires48',
 		crs: L.CRS.EPSG4326,
-		reuseTiles: true 
+		reuseTiles: true,
+		attribution:  '&copy; ' + modisLink
 		}).addTo(map);
 var noaaLink= '<a href="http://gis.srh.noaa.gov/arcgis/services/watchwarn/MapServer/WMSServer?request=GetCapabilities&service=WMS">NOAA WMS</a>';
 var usalert = L.tileLayer.wms('http://216.38.80.5/arcgis/services/watchwarn/MapServer/WmsServer?', {
