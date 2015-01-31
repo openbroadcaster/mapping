@@ -102,6 +102,7 @@ var OSMBase = L.tileLayer(
          var toner= new  L.StamenTileLayer("toner");
                     
 var map = L.map('map',{layers:[toner,watercolor, OSMBase],attributionControl:false}).setView([60.2928,-134.25921], 13);
+var credits = L.control.attribution({position: 'bottomleft'}).addTo(map);
 
 var modis24 = L.tileLayer.wms('https://firms.modaps.eosdis.nasa.gov/wms/?', {
 		format: 'img/png',
@@ -120,20 +121,22 @@ var modis48 = L.tileLayer.wms('https://firms.modaps.eosdis.nasa.gov/wms/?', {
 		crs: L.CRS.EPSG4326,
 		reuseTiles: true 
 		}).addTo(map);
-
+var noaaLink= '<a href="http://gis.srh.noaa.gov/arcgis/services/watchwarn/MapServer/WMSServer?request=GetCapabilities&service=WMS">NOAA WMS</a>';
 var usalert = L.tileLayer.wms('http://216.38.80.5/arcgis/services/watchwarn/MapServer/WmsServer?', {
 		format: 'img/png',
 		transparent: true,
 		layers: 0,
-		reuseTiles: true 
+		reuseTiles: true,
+		attribution: '&copy; ' + noaaLink 
 		}).addTo(map);
 
-
+var naadLink= '<a href="http://rss1.naad-adna.pelmorex.com">NAAD GeoRSS</a>';
 var alerts = L.realtime({
 	url: '../modules/device_map/includes/alerts.json',
 	crossOrign: false,
 	type: 'json',
        },{
+    attribution: '&copy; ' + naadLink,
 	interval: 300 * 1000,
 	style: function (feature) {
 	if (feature.properties.category[6].term != "urgency=Past")
@@ -147,9 +150,9 @@ var alerts = L.realtime({
        onEachFeature: onEachFeature,
          filter: function(feature, layer) {
              return feature.properties.category[3].term == "language=en-CA"
-                    && feature.properties.category[0].term != "status=Test"
+                    && feature.properties.category[0].term != "status=Test";
 //                    && feature.properties.category[6].term != "urgency=Past"
-        ;}
+        }
          });
 markerLayer.addLayer(alerts);
 markerLayer.addTo(map);
@@ -250,6 +253,7 @@ $("#hideLegend").click(function () {
         $("#map").animate({width:"95%"},300,function(){
         $("#hideLegend").hide();
         $("#showLegend").show();
+        credits.removeFrom(map);
         map.invalidateSize(true);
         });
 });
@@ -259,6 +263,7 @@ $("#showLegend").click(function() {
         $("#showLegend").hide();
         $("#legend").show(200);
         map.invalidateSize(true);
+        credits.addTo(map);
         });
 });
 map.on('overlayremove', function(eventLayer){
@@ -274,10 +279,6 @@ map.on('overlayadd', function(eventLayer){
 	  { $("#legendCAN").show() }
 });
 
-var credits = L.control.attribution({position: 'bottomleft'}).addTo(map);
-var naadLink= '<a href="http://rss1.naad-adna.pelmorex.com">NAAD GeoRSS</a>';
-var noaaLink= '<a href="http://gis.srh.noaa.gov/arcgis/services/watchwarn/MapServer/WMSServer?request=GetCapabilities&service=WMS">NOAA WMS</a>';
-credits.addAttribution('&#124; ' + naadLink + ' &#124; ' + noaaLink);
 $("#showLegend").hide();
  } //end init_map
 }
