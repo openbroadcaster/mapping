@@ -201,7 +201,7 @@ alerts.on('update', function() {
 
 
 var oms = new OverlappingMarkerSpiderfier(map);
-var bounds = new L.LatLngBounds();
+var bounds = new L.LatLngBounds([60.3,-134.3],[60.5,-134.0]);
 $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
 	var devices = L.geoJson(data, {
 		pointToLayer: function(feature,latlng){
@@ -265,7 +265,7 @@ $.getJSON("../modules/device_map/includes/usaleg.json",function(data) {
     		rowData.imageData + "'></td>"));
 		}
 });
-// $("#legendUSA").hide();
+
 $("#hideLegend").click(function () {
         $("#legend").hide(200);
         $("#map").animate({width:"95%"},300,function(){
