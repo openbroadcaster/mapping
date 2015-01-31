@@ -98,10 +98,10 @@ var OSMBase = L.tileLayer(
 		maxZoom: 18
 		});
 
-         var watercolor = new  L.StamenTileLayer("watercolor");
-         var toner= new  L.StamenTileLayer("toner");
+var watercolor = new  L.StamenTileLayer("watercolor");
+var toner= new  L.StamenTileLayer("toner");
                     
-var map = L.map('map',{layers:[toner,watercolor, OSMBase],attributionControl:false}).setView([60.2928,-134.25921], 13);
+var map = L.map('map',{layers:[OSMBase,toner,watercolor],attributionControl:false}).setView([60.2928,-134.25921], 13);
 var credits = L.control.attribution({position: 'bottomleft'}).addTo(map);
 
 var modis24 = L.tileLayer.wms('https://firms.modaps.eosdis.nasa.gov/wms/?', {
@@ -156,6 +156,8 @@ var alerts = L.realtime({
          });
 markerLayer.addLayer(alerts);
 markerLayer.addTo(map);
+credits.addAttribution('&#124; ' + naadLink);
+
 var bases = {
             "Watercolor":watercolor,
             "Contrast":toner,
@@ -278,6 +280,8 @@ map.on('overlayadd', function(eventLayer){
 	else if (eventLayer.name=='NAAD Alerts (CAN)')
 	  { $("#legendCAN").show() }
 });
+
+
 
 $("#showLegend").hide();
  } //end init_map
