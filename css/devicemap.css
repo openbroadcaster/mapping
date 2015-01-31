@@ -18,9 +18,49 @@ overflow: hidden;
 	border:2px solid rgba(224,149,41,0.4);
 	box-shadow: 0 0 8px #999;
 	float:left;
-	width:70%;
+	width:68%;
 	height:99%;
      overflow:hidden;
+}
+.legend {
+   position:relative;
+    padding: 0px;
+    margin: 0px ;
+    width: 27%;
+    height: 100%;
+    font-size: 12px;
+    background: white;
+    background: rgba(255,255,255,0.2);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    float:right;
+    overflow:scroll;
+}
+.legendControl {
+  width: 4%;
+  height: 100%;
+  background: #b7bdc2;
+  -webkit-border-radius:2;
+  -moz-border-radius: 2;
+  border-radius: 2px;
+  text-shadow: 1px 1px 3px #666666;
+  -webkit-box-shadow: 0px 1px 3px #666666;
+  -moz-box-shadow: 0px 1px 3px #666666;
+  box-shadow: 0px 1px 3px #666666;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 28px;
+  padding: 1px 2px 1px 2px;
+  text-decoration: none;
+}
+.legendControl:hover {
+  background: #fac05c;
+  background-image: -webkit-linear-gradient(top, #fac05c, #b7bdc2);
+  background-image: -moz-linear-gradient(top, #fac05c, #b7bdc2);
+  background-image: -ms-linear-gradient(top, #fac05c, #b7bdc2);
+  background-image: -o-linear-gradient(top, #fac05c, #b7bdc2);
+  background-image: linear-gradient(to bottom, #fac05c, #b7bdc2);
+  text-decoration: none;
 }
 .legend #legendMODIS td{
 text-align:left;
@@ -33,19 +73,6 @@ width: 40%
 .legend #legendMODIS img{
 height:5px;
 width:5px;
-}
-.legend {
-    padding: 4px 6px;
-    margin: 0px 0px 2px 2px;
-    width: 27%;
-    height: 98%;
-    font-size: 12px;
-    background: white;
-    background: rgba(255,255,255,0.2);
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    border-radius: 5px;
-    float:left;
-    overflow:scroll;
 }
 .legend img {
     height: 18px;

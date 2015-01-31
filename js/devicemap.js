@@ -75,12 +75,13 @@ function recentActive(lastconnect) {
 }  
 
 function onEachDevice(feature, layer) {
-
+/*
     if(recentActive(feature.properties.last_connect_emergency))
                 { curStatus = 'emergency';
                 var popupContent = "<h1 style='color:red'>" + feature.properties.title + "</h1><h2 style='color:red'>EMERGENCY BROADCAST</h2>";
 
                 } else {
+*/
         var last_connect = !isNaN(feature.properties.last_connect) ? format_timestamp(feature.properties.last_connect) : '<i>never</i>';
         var last_connect_schedule = !isNaN(feature.properties.last_connect_schedule) ? format_timestamp(feature.properties.last_connect_schedule) : '<i>never</i>';
         var last_connect_playlog = !isNaN(feature.properties.last_connect_playlog) ? format_timestamp(feature.properties.last_connect_playlog) : '<i>never</i>';
@@ -99,8 +100,9 @@ function onEachDevice(feature, layer) {
         if (feature.properties && feature.properties.popupContent) {
                 popupContent += feature.properties.popupContent;
         }
-     }
+//     }
                 layer.bindPopup(popupContent);
+		
 };
 
 var curIcon = new ObsIcon({
@@ -112,15 +114,18 @@ var emergencyIcon = new ObsIcon({
         })
 ;
 function deviceToMarker(feature,latlng){
-	if (recentActive(feature.properties.last_connect_emergency))
+/*	if (recentActive(feature.properties.last_connect_emergency))
 		{
 		curIcon = emergencyIcon; 
-		} else {  
+		} else {
+*/  
 		curIcon = curIcon; 
-		}
+//		}
 
-                marker = new L.marker(latlng,{'icon':curIcon});
-                return marker;
+                device = new L.marker(latlng,{
+                        'icon':curIcon
+                });
+                return device;
 };
 
 	function onEachFeature(feature, layer) {
@@ -163,6 +168,7 @@ var OSMBase = L.tileLayer(
          var toner= new  L.StamenTileLayer("toner");
                     
 var map = L.map('map',{layers:[toner,watercolor, OSMBase],attributionControl:false}).setView([60.2928,-134.25921], 13);
+/*
 var modis24 = L.tileLayer.wms('https://firms.modaps.eosdis.nasa.gov/wms/?', {
 		format: 'img/png',
 		version: '1.1.1',
@@ -187,7 +193,7 @@ var usalert = L.tileLayer.wms('http://216.38.80.5/arcgis/services/watchwarn/MapS
 		layers: 0,
 		reuseTiles: true 
 		}).addTo(map);
-
+*/
 
 var alerts = L.realtime({
 	url: '../modules/device_map/includes/alerts.json',
@@ -218,27 +224,40 @@ var bases = {
             "Contrast":toner,
             "OpenStreetMap": OSMBase
              };
+var clouds = L.OWM.clouds({showLegend: false, opacity: 0.5});
+var snow  = L.OWM.snow({showLegend: true, legendPosition:'bottomright',opacity: 0.5});
+var precipitation  = L.OWM.precipitation({showLegend: false, opacity: 0.5});
 var overlays = {
 //	"Canada Alert Areas" : alerts,
         "NAAD Alerts (CAN)" : markerLayer,
-        "MODIS Fires - Past 24h" : modis24,
-        "MODIS Fires - Past 48h" : modis48,
-        "NOAA Alerts (USA)": usalert
+//        "MODIS Fires - Past 24h" : modis24,
+//        "MODIS Fires - Past 48h" : modis48,
+//        "NOAA Alerts (USA)": usalert,
+        "Clouds": clouds,
+        "Snow": snow,
+        "Precipitation": precipitation
 	};
 
 var layerControl = L.control.layers(bases, overlays).addTo(map); 
-map.setView([64,-98],3);
+map.setView([60.2928018,-134.2592146],4);
 
 alerts.on('update', function() {
 //map.fitBounds(alerts.getBounds(), {maxZoom: 3});
 });
 
+var markers = L.markerClusterGroup();
 $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
-                var devices = L.geoJson(data, {
-                onEachFeature: onEachDevice,
-                pointToLayer: deviceToMarker
-                }).addTo(map);
+        var devices = L.geoJson(data, {
+            onEachFeature: onEachDevice,
+            pointToLayer: deviceToMarker
+        });
+        markers.addLayer(devices);
+        map.addLayer(markers);
+//        map.addLayer(devices);
 });
+markers.on('clustermouseover', function (a) {
+        a.layer.spiderfy();
+        });
 
 $.getJSON("../modules/device_map/includes/canleg.json",function(data) {
     for (var i = 0; i < data.length; i++) {
@@ -264,6 +283,23 @@ $.getJSON("../modules/device_map/includes/usaleg.json",function(data) {
     		rowData.imageData + "'></td>"));
 		}
 });
+$("#legendUSA").hide();
+$("#hideLegend").click(function () {
+        $("#legend").hide(200);
+        $("#map").animate({width:"95%"},300,function(){
+        $("#hideLegend").hide();
+        $("#showLegend").show();
+        map.invalidateSize(true);
+        });
+});
+$("#showLegend").click(function() {
+        $("#map").animate({width:"68%"},300,function(){
+        $("#hideLegend").show();
+        $("#showLegend").hide();
+        $("#legend").show(200);
+        map.invalidateSize(true);
+        });
+});
 
 map.on('overlayremove', function(eventLayer){
 	if (eventLayer.name=='NOAA Alerts (USA)')
@@ -282,7 +318,7 @@ map.on('overlayadd', function(eventLayer){
 //var naadLink= '<a href="http://rss1.naad-adna.pelmorex.com">NAAD GeoRSS</a>';
 //var noaaLink= '<a href="http://gis.srh.noaa.gov/arcgis/services/watchwarn/MapServer/WMSServer?request=GetCapabilities&service=WMS">NOAA WMS</a>';
 //credits.addAttribution('&#124; ' + naadLink + ' &#124; ' + noaaLink);
-
+$("#showLegend").hide();
  } //end init_map
 
 }

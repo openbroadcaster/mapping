@@ -77,8 +77,8 @@ class DeviceMapModule extends OBFModule
         public function uninstall()
         {
 
-	$this->db->query('ALTER TABLE devices DROP COLUMN `longitude`');
-	$this->db->query('ALTER TABLE devices DROP COLUMN `latitude`');
+//	$this->db->query('ALTER TABLE devices DROP COLUMN `longitude`');
+//	$this->db->query('ALTER TABLE devices DROP COLUMN `latitude`');
 
 //        $this->db->query('DROP TABLE  `module_device_map`');
 //        $this->db->query('DROP TABLE  `module_map_bases`');
