@@ -202,7 +202,7 @@ alerts.on('update', function() {
 var lightIcon = L.Icon.Default;
 var darkIcon  = L.Icon.Default.extend({options: {iconUrl: L.Icon.Default.imagePath + '/marker-desat.png'}});
 
-var oms = new OverlappingMarkerSpidefier(map);
+var oms = new OverlappingMarkerSpiderfier(map);
 var bounds = new L.LatLngBounds();
 $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
 	var devices = L.geoJson(data, {
