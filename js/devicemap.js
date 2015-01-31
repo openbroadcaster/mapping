@@ -83,7 +83,7 @@ var emergencyIcon = new ObsIcon({
         })
 ;
 
-	function onEachFeature(feature, layer) {
+function onEachFeature(feature, layer) {
 	  if (feature.properties) {
                  var popCon;
                      popCon = "<h4>"  + feature.properties.title.toUpperCase() + "</h4>";
@@ -99,7 +99,6 @@ var emergencyIcon = new ObsIcon({
              var marker = new L.Marker(ctr, {icon:smallIcon});
              marker.bindPopup(popCon);
              markerLayer.addLayer(marker);
-//             markerLayer.addTo(map);
 		};
 
 var naadStyle = {
@@ -194,15 +193,13 @@ var overlays = {
 	};
 
 var layerControl = L.control.layers(bases, overlays).addTo(map); 
-map.setView([60.2928018,-134.2592146],4);
+// map.setView([60.2928018,-134.2592146],4);
 
 alerts.on('update', function() {
 //map.fitBounds(alerts.getBounds(), {maxZoom: 3});
 });
 
-var curIcon  = new ObsIcon({
-        iconUrl: './modules/device_map/css/images/icons/black/broadcast.png',
-        });
+
 var oms = new OverlappingMarkerSpiderfier(map);
 var bounds = new L.LatLngBounds();
 $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
@@ -303,7 +300,7 @@ map.on('overlayadd', function(eventLayer){
 //var naadLink= '<a href="http://rss1.naad-adna.pelmorex.com">NAAD GeoRSS</a>';
 //var noaaLink= '<a href="http://gis.srh.noaa.gov/arcgis/services/watchwarn/MapServer/WMSServer?request=GetCapabilities&service=WMS">NOAA WMS</a>';
 //credits.addAttribution('&#124; ' + naadLink + ' &#124; ' + noaaLink);
-//$("#showLegend").hide();
+$("#showLegend").hide();
  } //end init_map
 
 }
