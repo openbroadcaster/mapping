@@ -199,8 +199,8 @@ map.setView([60.2928018,-134.2592146],4);
 alerts.on('update', function() {
 //map.fitBounds(alerts.getBounds(), {maxZoom: 3});
 });
-var lightIcon = L.Icon.Default;
-var darkIcon  = new ObsIcon({
+
+var curIcon  = new ObsIcon({
         iconUrl: './modules/device_map/css/images/icons/black/broadcast.png',
         });
 var oms = new OverlappingMarkerSpiderfier(map);
@@ -209,7 +209,7 @@ $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
 	var devices = L.geoJson(data, {
 		pointToLayer: function(feature,latlng){
 			bounds.extend(latlng);
-        var dmarker = new L.Marker(latlng, {icon: darkIcon });
+        var dmarker = new L.Marker(latlng, {icon: curIcon });
 			var last_connect = !isNaN(feature.properties.last_connect) ? format_timestamp(feature.properties.last_connect) : '<i>never</i>';
 			var last_connect_schedule = !isNaN(feature.properties.last_connect_schedule) ? format_timestamp(feature.properties.last_connect_schedule) : '<i>never</i>';
 			var last_connect_playlog = !isNaN(feature.properties.last_connect_playlog) ? format_timestamp(feature.properties.last_connect_playlog) : '<i>never</i>';
@@ -236,11 +236,11 @@ $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
 		map.openPopup(popup);
 	});
 	oms.addListener('spiderfy', function(markers) {
-		for (var i = 0, len = markers.length; i < len; i ++) markers[i].setIcon(lightIcon);
+		for (var i = 0, len = markers.length; i < len; i ++) markers[i].setIcon(curIcon);
 		map.closePopup();
 	});
 	oms.addListener('unspiderfy', function(markers) {
-		for (var i = 0, len = markers.length; i < len; i ++) markers[i].setIcon(darkIcon);
+		for (var i = 0, len = markers.length; i < len; i ++) markers[i].setIcon(curIcon);
 	});
 
 $.getJSON("../modules/device_map/includes/canleg.json",function(data) {
