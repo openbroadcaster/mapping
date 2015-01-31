@@ -200,8 +200,9 @@ alerts.on('update', function() {
 //map.fitBounds(alerts.getBounds(), {maxZoom: 3});
 });
 var lightIcon = L.Icon.Default;
-var darkIcon  = L.Icon.Default.extend({options: {iconUrl: L.Icon.Default.imagePath + '/marker-desat.png'}});
-
+var darkIcon  = new ObsIcon({
+        iconUrl: './modules/device_map/css/images/icons/black/broadcast.png',
+        });
 var oms = new OverlappingMarkerSpiderfier(map);
 var bounds = new L.LatLngBounds();
 $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
