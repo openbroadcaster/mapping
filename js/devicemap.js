@@ -268,7 +268,7 @@ $.getJSON("../modules/device_map/includes/usaleg.json",function(data) {
     		rowData.imageData + "'></td>"));
 		}
 });
-$("#legendUSA").hide();
+// $("#legendUSA").hide();
 $("#hideLegend").click(function () {
         $("#legend").hide(200);
         $("#map").animate({width:"95%"},300,function(){
@@ -303,7 +303,7 @@ map.on('overlayadd', function(eventLayer){
 //var naadLink= '<a href="http://rss1.naad-adna.pelmorex.com">NAAD GeoRSS</a>';
 //var noaaLink= '<a href="http://gis.srh.noaa.gov/arcgis/services/watchwarn/MapServer/WMSServer?request=GetCapabilities&service=WMS">NOAA WMS</a>';
 //credits.addAttribution('&#124; ' + naadLink + ' &#124; ' + noaaLink);
-$("#showLegend").hide();
+//$("#showLegend").hide();
  } //end init_map
 
 }
