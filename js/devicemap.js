@@ -74,37 +74,6 @@ function recentActive(lastconnect) {
         if (diffMinutes > -1000) {return true} else {return false};     
 }  
 
-function onEachDevice(feature, layer) {
-/*
-    if(recentActive(feature.properties.last_connect_emergency))
-                { curStatus = 'emergency';
-                var popupContent = "<h1 style='color:red'>" + feature.properties.title + "</h1><h2 style='color:red'>EMERGENCY BROADCAST</h2>";
-
-                } else {
-*/
-        var last_connect = !isNaN(feature.properties.last_connect) ? format_timestamp(feature.properties.last_connect) : '<i>never</i>';
-        var last_connect_schedule = !isNaN(feature.properties.last_connect_schedule) ? format_timestamp(feature.properties.last_connect_schedule) : '<i>never</i>';
-        var last_connect_playlog = !isNaN(feature.properties.last_connect_playlog) ? format_timestamp(feature.properties.last_connect_playlog) : '<i>never</i>';
-        var last_connect_media = !isNaN(feature.properties.last_connect_media) ? format_timestamp(feature.properties.last_connect_media) : '<i>never</i>';
-        var last_connect_emergency = !isNaN(feature.properties.last_connect_emergency) ? format_timestamp(feature.properties.last_connect_emergency) : '<i>never</i>';
-        if (recentActive(feature.properties.last_connect)){var curStatus='active'} else {var curStatus='inactive'};
-        var popupContent = feature.properties.title + "<ul>" +
-         "<li>Last Connect: " + last_connect + "</li>" +
-         "<li>Last Schedule: " + last_connect_schedule + "</li>" +
-         "<li>Last Playlog: " + last_connect_playlog + "</li>" +
-         "<li>Last Media: " + last_connect_media + "</li>" +
-         "<li style='font-color:red'>Last Emergency: " + last_connect_emergency + "</li>" + 
-         "<li>Version: " + feature.properties.version + "</li>" +
-         "<li>Location: " + feature.geometry.coordinates[0] + "," + feature.geometry.coordinates[1] + "</li>" +
-         "<li>Current Status: " + curStatus + "</li>";  
-        if (feature.properties && feature.properties.popupContent) {
-                popupContent += feature.properties.popupContent;
-        }
-//     }
-                layer.bindPopup(popupContent);
-		
-};
-
 var curIcon = new ObsIcon({
         iconUrl: './modules/device_map/css/images/icons/black/broadcast.png',
         })
@@ -113,20 +82,6 @@ var emergencyIcon = new ObsIcon({
         iconUrl: './modules/device_map/css/images/icons/red/broadcast.png',
         })
 ;
-function deviceToMarker(feature,latlng){
-/*	if (recentActive(feature.properties.last_connect_emergency))
-		{
-		curIcon = emergencyIcon; 
-		} else {
-*/  
-		curIcon = curIcon; 
-//		}
-
-                device = new L.marker(latlng,{
-                        'icon':curIcon
-                });
-                return device;
-};
 
 	function onEachFeature(feature, layer) {
 	  if (feature.properties) {
@@ -245,19 +200,45 @@ alerts.on('update', function() {
 //map.fitBounds(alerts.getBounds(), {maxZoom: 3});
 });
 
-var markers = L.markerClusterGroup();
+var oms = new OverlappingMarkerSpidefier(map);
+var bounds - new L.LatLngBounds();
 $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
-        var devices = L.geoJson(data, {
-            onEachFeature: onEachDevice,
-            pointToLayer: deviceToMarker
+	var devices = L.geoJson(data, {
+		pointToLayer: function(feature,latlng){
+			bounds.extend(latlng);
+			var dmarker = new L.marker(latlng,{'icon':curIcon});
+			var last_connect = !isNaN(feature.properties.last_connect) ? format_timestamp(feature.properties.last_connect) : '<i>never</i>';
+			var last_connect_schedule = !isNaN(feature.properties.last_connect_schedule) ? format_timestamp(feature.properties.last_connect_schedule) : '<i>never</i>';
+			var last_connect_playlog = !isNaN(feature.properties.last_connect_playlog) ? format_timestamp(feature.properties.last_connect_playlog) : '<i>never</i>';
+			var last_connect_media = !isNaN(feature.properties.last_connect_media) ? format_timestamp(feature.properties.last_connect_media) : '<i>never</i>';
+			var popupContent = feature.properties.title + "<ul>" +
+			 "<li>Last Connect: " + last_connect + "</li>" +
+			 "<li>Last Schedule: " + last_connect_schedule + "</li>" +
+			 "<li>Last Playlog: " + last_connect_playlog + "</li>" +
+			 "<li>Last Media: " + last_connect_media + "</li>" +
+			 "<li>Version: " + feature.properties.version + "</li>" +
+			 "<li>Location: " + feature.geometry.coordinates[0] + "," + feature.geometry.coordinates[1] + "</li>" +
+		dmarker.desc = popupContent
+		map.addLayer(dmarker);
+		oms.addMarker(dmarker);
+		};
         });
-        markers.addLayer(devices);
-        map.addLayer(markers);
-//        map.addLayer(devices);
-});
-markers.on('clustermouseover', function (a) {
-        a.layer.spiderfy();
-        });
+	});
+	map.fitBounds(bounds);
+	
+	var popup = new L.Popup({closeButton: false, offset: new L.Point(0.5, -24)});
+	oms.addListener('click', function(marker) {
+		popup.setContent(marker.desc);
+		popup.setLatLng(marker.getLatLng());
+		map.openPopup(popup);
+	});
+	oms.addListener('spiderfy', function(markers) {
+		for (var i = 0, len = markers.length; i < len; i ++) markers[i].setIcon(new lightIcon());
+		map.closePopup();
+	});
+	oms.addListener('unspiderfy', function(markers) {
+		for (var i = 0, len = markers.length; i < len; i ++) markers[i].setIcon(new darkIcon());
+	});
 
 $.getJSON("../modules/device_map/includes/canleg.json",function(data) {
     for (var i = 0; i < data.length; i++) {
