@@ -201,7 +201,7 @@ alerts.on('update', function() {
 });
 
 var oms = new OverlappingMarkerSpidefier(map);
-var bounds - new L.LatLngBounds();
+var bounds = new L.LatLngBounds();
 $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
 	var devices = L.geoJson(data, {
 		pointToLayer: function(feature,latlng){
