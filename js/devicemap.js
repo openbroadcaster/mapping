@@ -25,14 +25,7 @@ this.init_module = function()
 	$('#obmenu-admin').append('<li  style="font-size:0.8em;" data-permissions="edit_map"><a href="javascript: ModuleDevicemap.init_map();"> Map Settings</a></li>');
 
 //static leaflet files placed in js and css directories
-/*
-	   var file = document.createElement('link');
-       file.setAttribute('rel', 'stylesheet');
-       file.setAttribute('type', 'text/css');
-       file.setAttribute('href', 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css');
-       document.getElementsByTagName('head')[0].appendChild(file);
-*/
- 
+
            var file = document.createElement('link');
        file.setAttribute('rel', 'stylesheet');
        file.setAttribute('type', 'text/css');
@@ -43,23 +36,11 @@ this.init_module = function()
        script.setAttribute('type', 'text/javascript');
        script.setAttribute('src', 'http://leaflet.github.io/Leaflet.draw/leaflet.draw.js');
        document.getElementsByTagName('head')[0].appendChild(script);
-/* 
-           var script = document.createElement('script');
-       script.setAttribute('type', 'text/javascript');
-       script.setAttribute('src', '../junk/js/leaflet-realtime.js');
-       document.getElementsByTagName('head')[0].appendChild(script);
-*/
+
            var script = document.createElement('script');
        script.setAttribute('type', 'text/javascript');
        script.setAttribute('src', 'http://maps.stamen.com/js/tile.stamen.js?v1.2.3');
        document.getElementsByTagName('head')[0].appendChild(script);
-/*
-           var script = document.createElement('script');
-       script.setAttribute('type', 'text/javascript');
-       script.setAttribute('src', 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js');
-       document.getElementsByTagName('head')[0].appendChild(script);
-*/ 
-
      }	
 
 this.init_map =  function()
@@ -108,7 +89,6 @@ var naadStyle = {
 		fillOpacity: 0.1,
 		fillColor: "#CC2247"
 	};	    
-	  
 
 var mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
 var markerLayer = new L.layerGroup();
@@ -193,19 +173,18 @@ var overlays = {
 	};
 
 var layerControl = L.control.layers(bases, overlays).addTo(map); 
-// map.setView([60.2928018,-134.2592146],4);
+
 
 alerts.on('update', function() {
 //map.fitBounds(alerts.getBounds(), {maxZoom: 3});
 });
 
--141.0,59.99,-123.81,69.85
 var oms = new OverlappingMarkerSpiderfier(map);
 var bounds = new L.LatLngBounds([59.99,-141.0],[69.85,-123.81]);
 $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
 	var devices = L.geoJson(data, {
 		pointToLayer: function(feature,latlng){
-			bounds.extend(latlng);
+			
         var dmarker = new L.Marker(latlng, {icon: curIcon });
 			var last_connect = !isNaN(feature.properties.last_connect) ? format_timestamp(feature.properties.last_connect) : '<i>never</i>';
 			var last_connect_schedule = !isNaN(feature.properties.last_connect_schedule) ? format_timestamp(feature.properties.last_connect_schedule) : '<i>never</i>';
@@ -224,8 +203,9 @@ $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
 		return dmarker;
 		}
         });
-	});
+	bounds.extend(devices.getBounds);
 	map.fitBounds(bounds);
+	});
 	
 	var popup = new L.Popup({closeButton: false, offset: new L.Point(0.5, -24)});
 	oms.addListener('click', function(marker) {
@@ -265,7 +245,6 @@ $.getJSON("../modules/device_map/includes/usaleg.json",function(data) {
     		rowData.imageData + "'></td>"));
 		}
 });
-
 $("#hideLegend").click(function () {
         $("#legend").hide(200);
         $("#map").animate({width:"95%"},300,function(){
@@ -282,7 +261,6 @@ $("#showLegend").click(function() {
         map.invalidateSize(true);
         });
 });
-
 map.on('overlayremove', function(eventLayer){
 	if (eventLayer.name=='NOAA Alerts (USA)')
 	  { $("#legendUSA").hide() } 
@@ -296,13 +274,12 @@ map.on('overlayadd', function(eventLayer){
 	  { $("#legendCAN").show() }
 });
 
-//var credits = L.control.attribution({position: 'bottomleft'}).addTo(map);
-//var naadLink= '<a href="http://rss1.naad-adna.pelmorex.com">NAAD GeoRSS</a>';
-//var noaaLink= '<a href="http://gis.srh.noaa.gov/arcgis/services/watchwarn/MapServer/WMSServer?request=GetCapabilities&service=WMS">NOAA WMS</a>';
-//credits.addAttribution('&#124; ' + naadLink + ' &#124; ' + noaaLink);
+var credits = L.control.attribution({position: 'bottomleft'}).addTo(map);
+var naadLink= '<a href="http://rss1.naad-adna.pelmorex.com">NAAD GeoRSS</a>';
+var noaaLink= '<a href="http://gis.srh.noaa.gov/arcgis/services/watchwarn/MapServer/WMSServer?request=GetCapabilities&service=WMS">NOAA WMS</a>';
+credits.addAttribution('&#124; ' + naadLink + ' &#124; ' + noaaLink);
 $("#showLegend").hide();
  } //end init_map
-
 }
 $(document).ready(function() {
 
