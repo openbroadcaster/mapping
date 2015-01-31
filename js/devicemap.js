@@ -224,6 +224,7 @@ $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
 		dmarker.desc = popupContent;
 		map.addLayer(dmarker);
 		oms.addMarker(dmarker);
+		return dmarker;
 		}
         });
 	});
