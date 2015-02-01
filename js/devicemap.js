@@ -196,7 +196,7 @@ $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
 			var last_connect_schedule = !isNaN(feature.properties.last_connect_schedule) ? format_timestamp(feature.properties.last_connect_schedule) : '<i>never</i>';
 			var last_connect_playlog = !isNaN(feature.properties.last_connect_playlog) ? format_timestamp(feature.properties.last_connect_playlog) : '<i>never</i>';
 			var last_connect_media = !isNaN(feature.properties.last_connect_media) ? format_timestamp(feature.properties.last_connect_media) : '<i>never</i>';
-			var popupContent = feature.properties.title + "<ul>" +
+			var popupContent = "<h4>" + feature.properties.title + "</h4><ul>" +
 			 "<li>Last Connect: " + last_connect + "</li>" +
 			 "<li>Last Schedule: " + last_connect_schedule + "</li>" +
 			 "<li>Last Playlog: " + last_connect_playlog + "</li>" +

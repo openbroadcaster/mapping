@@ -151,6 +151,10 @@ width:5px;
     color: black;
     padding: 5;
 }
+.leaflet-popup-content .ul {
+	list-style-type: square;
+	list-style-position: inside;
+}
 
 .leaflet-popup-content h4 {
     text-transform: uppercase !important;
