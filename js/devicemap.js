@@ -138,7 +138,6 @@ var alerts = L.realtime({
 	crossOrign: false,
 	type: 'json',
        },{
-    attribution: '&copy; ' + naadLink,
 	interval: 300 * 1000,
 	style: function (feature) {
 	if (feature.properties.category[6].term != "urgency=Past")
@@ -167,7 +166,7 @@ var bases = {
              };
 var clouds = L.OWM.clouds({showLegend: false, opacity: 0.5});
 var snow  = L.OWM.snow({showLegend: true, legendPosition:'bottomright',opacity: 0.5});
-var precipitation  = L.OWM.precipitation({showLegend: false, opacity: 0.5});
+var precipitation  = L.OWM.precipitation({showLegend: true, opacity: 0.5});
 var overlays = {
 //	"Canada Alert Areas" : alerts,
         "NAAD Alerts (CAN)" : markerLayer,
