@@ -182,7 +182,16 @@ var overlays = {
 
 var layerControl = L.control.layers(bases, overlays).addTo(map); 
 
-
+layerControl.on('overlayremove', function(layer,name) {
+	if (name = 'modis24') { 
+	  $("#legendMODIS").hide();
+	}
+ });
+layerControl.on('overlayadd', function(layer,name) {
+	if (name = 'modis24') { 
+	  $("#legendMODIS").show();
+	}
+});
 alerts.on('update', function() {
 //map.fitBounds(alerts.getBounds(), {maxZoom: 3});
 });
