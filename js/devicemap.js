@@ -182,12 +182,12 @@ var overlays = {
 
 var layerControl = L.control.layers(bases, overlays).addTo(map); 
 
-layerControl.on('overlayremove', function(layer,name) {
+map.on('overlayremove', function(layer,name) {
 	if (name = 'modis24') { 
 	  $("#legendMODIS").hide();
 	}
  });
-layerControl.on('overlayadd', function(layer,name) {
+map.on('overlayadd', function(layer,name) {
 	if (name = 'modis24') { 
 	  $("#legendMODIS").show();
 	}
