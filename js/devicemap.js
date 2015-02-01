@@ -124,7 +124,7 @@ var modis48 = L.tileLayer.wms('https://firms.modaps.eosdis.nasa.gov/wms/?', {
 		crs: L.CRS.EPSG4326,
 		reuseTiles: true,
 		attribution:  '&copy; ' + modisLink
-		}).addTo(map);
+		});
 var noaaLink= '<a href="http://gis.srh.noaa.gov/arcgis/services/watchwarn/MapServer/WMSServer?request=GetCapabilities&service=WMS">NOAA WMS</a>';
 var usalert = L.tileLayer.wms('http://216.38.80.5/arcgis/services/watchwarn/MapServer/WmsServer?', {
 		format: 'img/png',
