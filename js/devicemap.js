@@ -196,6 +196,10 @@ map.on('overlayadd', function(layer,name) {
 	  $("#legendMODIS").show();
 	}
 });
+map.on('enterFullscreen', function() 
+      map.invalidateSize();
+      $("#legend").hide(200);
+});
 alerts.on('update', function() {
 //map.fitBounds(alerts.getBounds(), {maxZoom: 3});
 });
@@ -284,17 +288,15 @@ $("#showLegend").click(function() {
         credits.addTo(map);
         });
 });
-map.on('overlayremove', function(eventLayer){
-	if (eventLayer.name=='NOAA Alerts (USA)')
-	  { $("#legendUSA").hide() } 
-	else if (eventLayer.name=='NAAD Alerts (CAN)')
-	  { $("#legendCAN").hide() }
-});
-map.on('overlayadd', function(eventLayer){
-	if (eventLayer.name=='NOAA Alerts (USA)')
-	  { $("#legendUSA").show() } 
-	else if (eventLayer.name=='NAAD Alerts (CAN)')
-	  { $("#legendCAN").show() }
+map.on('overlayremove', function(layer,name) {
+        if (layer = modis24) {
+          $("#legendMODIS").hide();
+        }
+ });
+map.on('overlayadd', function(layer,name) {
+        if (layer = modis24) {
+          $("#legendMODIS").show();
+        }
 });
 map.on('enterFullscreen', function(){
       map.invalidateSize();
