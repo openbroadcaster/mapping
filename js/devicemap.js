@@ -22,7 +22,6 @@ var ModuleDevicemap = new function()
 this.init_module = function()
 	{
 	$('#obmenu-media').prepend('<li style="font-size:0.8em;" data-permissions="view_map"><a href="javascript: ModuleDevicemap.init_map();">ems alerts</a></li>');
-	$('#obmenu-admin').append('<li  style="font-size:0.8em;" data-permissions="edit_map"><a href="javascript: ModuleDevicemap.init_map();"> Map Settings</a></li>');
 
 //static leaflet files placed in js and css directories
 
