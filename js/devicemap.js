@@ -100,7 +100,12 @@ var OSMBase = L.tileLayer(
 var watercolor = new  L.StamenTileLayer("watercolor");
 var toner= new  L.StamenTileLayer("toner");
                     
-var map = L.map('map',{layers:[OSMBase,toner,watercolor],attributionControl:false}).setView([60.2928,-134.25921], 13);
+var map = L.map('map',{
+	layers:[OSMBase,toner,watercolor],
+	attributionControl:false, 
+	fullscreenControl: true, 
+	fullscreenControlOptions: { position: 'topleft'}
+	}).setView([60.2928,-134.25921], 13);
 var credits = L.control.attribution({position: 'bottomleft'}).addTo(map);
 var modisLink = '<a href="http://earthdata.nasa.gov/data/nrt-data/firms">MODIS Hotspots:NASA</a>';
 var modis24 = L.tileLayer.wms('https://firms.modaps.eosdis.nasa.gov/wms/?', {
@@ -291,7 +296,9 @@ map.on('overlayadd', function(eventLayer){
 	else if (eventLayer.name=='NAAD Alerts (CAN)')
 	  { $("#legendCAN").show() }
 });
-
+map.on('enterFullscreen', function(){
+      map.invalidateSize();
+});
 
 
 $("#showLegend").hide();
