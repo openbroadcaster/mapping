@@ -101,7 +101,7 @@ var watercolor = new  L.StamenTileLayer("watercolor");
 var toner= new  L.StamenTileLayer("toner");
                     
 var map = L.map('map',{
-	layers:[OSMBase,toner,watercolor],
+	layers:[toner,watercolor,OSMBase],
 	attributionControl:false, 
 	fullscreenControl: true, 
 	fullscreenControlOptions: { position: 'topleft'}
@@ -173,6 +173,7 @@ var bases = {
 var clouds = L.OWM.clouds({showLegend: false, opacity: 0.5});
 var snow  = L.OWM.snow({showLegend: true, legendPosition:'bottomright',opacity: 0.5});
 var precipitation  = L.OWM.precipitation({showLegend: true, opacity: 0.5});
+var temperature  = L.OWM.temperature({showLegend: true, opacity: 0.7});
 var overlays = {
 //	"Canada Alert Areas" : alerts,
         "NAAD Alerts (CAN)" : markerLayer,
@@ -181,7 +182,8 @@ var overlays = {
         "NOAA Alerts (USA)": usalert,
         "Clouds": clouds,
         "Snow": snow,
-        "Precipitation": precipitation
+        "Precipitation": precipitation,
+        "Temperature": temperature 
 	};
 
 var layerControl = L.control.layers(bases, overlays).addTo(map); 
@@ -196,26 +198,27 @@ map.on('overlayadd', function(layer,name) {
 	  $("#legendMODIS").show();
 	}
 });
-map.on('enterFullscreen', function() 
+map.on('enterFullscreen', function(){ 
       map.invalidateSize();
-      $("#legend").hide(200);
+});
+map.on('exitFullscreen', function(){ 
 });
 alerts.on('update', function() {
 //map.fitBounds(alerts.getBounds(), {maxZoom: 3});
 });
 
-var oms = new OverlappingMarkerSpiderfier(map);
+var oms = new OverlappingMarkerSpiderfier(map, { keepSpiderfied:true });
 var bounds = new L.LatLngBounds([59.99,-141.0],[69.85,-123.81]);
 $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
 	var devices = L.geoJson(data, {
 		pointToLayer: function(feature,latlng){
-			
-        var dmarker = new L.Marker(latlng, {icon: curIcon });
-			var last_connect = !isNaN(feature.properties.last_connect) ? format_timestamp(feature.properties.last_connect) : '<i>never</i>';
-			var last_connect_schedule = !isNaN(feature.properties.last_connect_schedule) ? format_timestamp(feature.properties.last_connect_schedule) : '<i>never</i>';
-			var last_connect_playlog = !isNaN(feature.properties.last_connect_playlog) ? format_timestamp(feature.properties.last_connect_playlog) : '<i>never</i>';
-			var last_connect_media = !isNaN(feature.properties.last_connect_media) ? format_timestamp(feature.properties.last_connect_media) : '<i>never</i>';
-			var popupContent = "<h4>" + feature.properties.title + "</h4><ul>" +
+        	var dmarker = new L.Marker(latlng, {icon: curIcon });
+		var last_connect = !isNaN(feature.properties.last_connect) ? format_timestamp(feature.properties.last_connect) : '<i>never</i>';
+		var last_connect_schedule = !isNaN(feature.properties.last_connect_schedule) ? format_timestamp(feature.properties.last_connect_schedule) : '<i>never</i>';
+		var last_connect_playlog = !isNaN(feature.properties.last_connect_playlog) ? format_timestamp(feature.properties.last_connect_playlog) : '<i>never</i>';
+		var last_connect_media = !isNaN(feature.properties.last_connect_media) ? format_timestamp(feature.properties.last_connect_media) : '<i>never</i>';
+		var title = "<h4>" + feature.properties.title + "</h4>";
+		var popupContent = "<h4>" + feature.properties.title + "</h4><ul>" +
 			 "<li>Last Connect: " + last_connect + "</li>" +
 			 "<li>Last Schedule: " + last_connect_schedule + "</li>" +
 			 "<li>Last Playlog: " + last_connect_playlog + "</li>" +
@@ -223,6 +226,15 @@ $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
 			 "<li>Version: " + feature.properties.version + "</li>" +
 			 "<li>Location: " + feature.geometry.coordinates[0] + "," + feature.geometry.coordinates[1] + "</li>" ;
 		dmarker.desc = popupContent;
+        	dmarker.on('mouseover', function (e) {
+			var tpop = L.popup({className: "tpop", closeButton: false, offset: new L.Point(0.5, -24)})
+			.setLatLng(e.latlng)
+			.setContent(title)
+            		.openOn(map);
+        	});
+        	dmarker.on('mouseout', function (e) {
+            		this.closePopup();
+        	});
 		map.addLayer(dmarker);
 		oms.addMarker(dmarker);
 		return dmarker;
@@ -231,7 +243,6 @@ $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
 	bounds.extend(devices.getBounds);
 	map.fitBounds(bounds);
 	});
-	
 	var popup = new L.Popup({closeButton: false, offset: new L.Point(0.5, -24)});
 	oms.addListener('click', function(marker) {
 		popup.setContent(marker.desc);
@@ -239,8 +250,10 @@ $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
 		map.openPopup(popup);
 	});
 	oms.addListener('spiderfy', function(markers) {
-		for (var i = 0, len = markers.length; i < len; i ++) markers[i].setIcon(curIcon);
-		map.closePopup();
+		for (var i = 0, len = markers.length; i < len; i ++){
+			 markers[i].setIcon(curIcon);
+		}
+		// map.closePopup();
 	});
 	oms.addListener('unspiderfy', function(markers) {
 		for (var i = 0, len = markers.length; i < len; i ++) markers[i].setIcon(curIcon);
@@ -275,7 +288,6 @@ $("#hideLegend").click(function () {
         $("#map").animate({width:"95%"},300,function(){
         $("#hideLegend").hide();
         $("#showLegend").show();
-        credits.removeFrom(map);
         map.invalidateSize(true);
         });
 });
@@ -285,7 +297,6 @@ $("#showLegend").click(function() {
         $("#showLegend").hide();
         $("#legend").show(200);
         map.invalidateSize(true);
-        credits.addTo(map);
         });
 });
 map.on('overlayremove', function(layer,name) {

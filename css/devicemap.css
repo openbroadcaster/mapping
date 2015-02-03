@@ -136,6 +136,11 @@ width:5px;
   height: 10px;
   margin-top: 8px;
 }
+.leaflet-bottom {
+    position: absolute;
+    z-index: 10;
+    pointer-events: none;
+}
 
 .leaflet-popup-content-wrapper {
   background:rgba(227,229,237,0.9);
@@ -147,6 +152,11 @@ width:5px;
     overflow: scroll;
   }
 
+.tpop {
+   height: 35px;
+   width: 250px;
+    overflow:hidden ;
+  }
 .leaflet-popup-content {
     color: black;
     padding: 5;
