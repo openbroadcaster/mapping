@@ -17,35 +17,53 @@
     along with OpenBroadcaster Server.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+OBModules.DeviceMap = new Object();
+OBModules.DeviceMap.init = function()
+{
+  OB.Callbacks.add('ready',50,ModuleDevicemap.init_module);
+}
+
 var ModuleDevicemap = new function()
 {
+
+this.window_resize = function()
+{
+  if($('#map_container').length) $('#map_container').height( $('#layout_main').height() );
+}
+
 this.init_module = function()
 	{
-	$('#obmenu-media').prepend('<li style="font-size:0.8em;" data-permissions="view_map"><a href="javascript: ModuleDevicemap.init_map();">ems alerts</a></li>');
+
+  $(window).resize(ModuleDevicemap.window_resize);
+  OB.UI.addSubMenuItem('media','EMS Alerts','device_map_ems_alerts',ModuleDevicemap.init_map,-20,'view_map');
+	// $('#obmenu-media').prepend('<li style="font-size:0.8em;" data-permissions="view_map"><a href="javascript: ModuleDevicemap.init_map();">ems alerts</a></li>');
 
 //static leaflet files placed in js and css directories
 
            var file = document.createElement('link');
        file.setAttribute('rel', 'stylesheet');
        file.setAttribute('type', 'text/css');
-       file.setAttribute('href', 'http://leaflet.github.io/Leaflet.draw/leaflet.draw.css');
+       file.setAttribute('href', 'https://leaflet.github.io/Leaflet.draw/leaflet.draw.css');
        document.getElementsByTagName('head')[0].appendChild(file);
 
            var script = document.createElement('script');
        script.setAttribute('type', 'text/javascript');
-       script.setAttribute('src', 'http://leaflet.github.io/Leaflet.draw/leaflet.draw.js');
+       script.setAttribute('src', 'https://leaflet.github.io/Leaflet.draw/leaflet.draw.js');
        document.getElementsByTagName('head')[0].appendChild(script);
 
            var script = document.createElement('script');
        script.setAttribute('type', 'text/javascript');
-       script.setAttribute('src', 'http://maps.stamen.com/js/tile.stamen.js?v1.2.3');
+       // script.setAttribute('src', 'http://maps.stamen.com/js/tile.stamen.js?v1.2.3');
+       script.setAttribute('src', 'https://stamen-maps.a.ssl.fastly.net/js/tile.stamen.js?v1.2.3');
        document.getElementsByTagName('head')[0].appendChild(script);
      }	
 
 this.init_map =  function()
 	{
 	
-$('#layout_main').html(html.get('modules/device_map/devicemap.html'));
+OB.UI.replaceMain('modules/device_map/devicemap.html');
+ModuleDevicemap.window_resize();
+
 function recentActive(lastconnect) {
         var nowMinus1H = Math.round((new Date()).getTime()/1000);
         if(isNaN(lastconnect)){return false;} else {var dateToTest = lastconnect};
@@ -99,7 +117,6 @@ var OSMBase = L.tileLayer(
 
 var watercolor = new  L.StamenTileLayer("watercolor");
 var toner= new  L.StamenTileLayer("toner");
-                    
 var map = L.map('map',{
 	layers:[toner,watercolor,OSMBase],
 	attributionControl:false, 
@@ -173,7 +190,7 @@ var bases = {
 var clouds = L.OWM.clouds({showLegend: false, opacity: 0.5});
 var snow  = L.OWM.snow({showLegend: true, legendPosition:'bottomright',opacity: 0.5});
 var precipitation  = L.OWM.precipitation({showLegend: true, opacity: 0.5});
-var temperature  = L.OWM.temperature({showLegend: true, opacity: 0.7});
+var temperature  = L.OWM.temperature({showLegend: true, opacity: 0.4});
 var overlays = {
 //	"Canada Alert Areas" : alerts,
         "NAAD Alerts (CAN)" : markerLayer,
@@ -208,7 +225,7 @@ alerts.on('update', function() {
 });
 
 var oms = new OverlappingMarkerSpiderfier(map, { keepSpiderfied:true });
-var bounds = new L.LatLngBounds([59.99,-141.0],[69.85,-123.81]);
+var bounds = new L.LatLngBounds([49.99,-142.0],[69.85,-125.8]);
 $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
 	var devices = L.geoJson(data, {
 		pointToLayer: function(feature,latlng){
@@ -260,6 +277,7 @@ $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
 		for (var i = 0, len = markers.length; i < len; i ++) markers[i].setIcon(curIcon);
 	});
 
+/*
 	    $("#.tpop").droppable({
         drop: function(event, ui) {
           if($(ui.draggable).attr('data-mode')=='playlist')
@@ -282,6 +300,7 @@ $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
         }
 
     });
+*/
 
 $.getJSON("../modules/device_map/includes/canleg.json",function(data) {
     for (var i = 0; i < data.length; i++) {
@@ -341,9 +360,4 @@ map.on('enterFullscreen', function(){
 $("#showLegend").hide();
  } //end init_map
 }
-$(document).ready(function() {
-
-	ModuleDevicemap.init_module();
-
-});
 
