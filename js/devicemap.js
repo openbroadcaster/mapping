@@ -28,7 +28,7 @@ var ModuleDevicemap = new function()
 
 this.window_resize = function()
 {
-  if($('#map_container').length) $('#map_container').height( $('#layout_main').height() );
+  if($('#map_container').length) { $('#map_container').height( $('#layout_container').height() - 50 ); }
 }
 
 this.init_module = function()
