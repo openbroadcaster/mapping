@@ -81,7 +81,7 @@ var emergencyIcon = new ObsIcon({
         })
 ;
 
-function onEachFeature(feature, layer) {
+function onEachAlert(feature, layer) {
 	  if (feature.properties) {
                  var popCon;
                      popCon = "<h4>"  + feature.properties.title.toUpperCase() + "</h4>";
@@ -171,7 +171,7 @@ var alerts = L.realtime({
          return {color: "#2262CC", weight: 0, opacity: 0.1, fillOpacity: 0.1, fillColor: "#0f0f0f"} 
 	 }
 	}, 
-       onEachFeature: onEachFeature,
+       onEachFeature: onEachAlert,
          filter: function(feature, layer) {
              return feature.properties.category[3].term == "language=en-CA"
                     && feature.properties.category[0].term != "status=Test";
@@ -241,11 +241,10 @@ $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
 			 "<li>Last Playlog: " + last_connect_playlog + "</li>" +
 			 "<li>Last Media: " + last_connect_media + "</li>" +
 			 "<li>Version: " + feature.properties.version + "</li>" +
-			 "<li>Location: " + feature.geometry.coordinates[0] + "," + feature.geometry.coordinates[1] + "</li></ul>" +
-"<p><a href=''>Schedule a Show</a></p>" ;
+			 "<li>Location: " + feature.geometry.coordinates[0] + "," + feature.geometry.coordinates[1] + "</li></ul>"; 
 		dmarker.desc = popupContent;
         	dmarker.on('mouseover', function (e) {
-			var tpop = L.popup({className: "tpop droppable_target_playlist", closeButton: false, offset: new L.Point(0.5, -24)})
+			var tpop = L.popup({className: "tpop", closeButton: false, offset: new L.Point(0.5, -24)})
 			.setLatLng(e.latlng)
 			.setContent(title)
             		.openOn(map);
@@ -276,31 +275,6 @@ $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
 	oms.addListener('unspiderfy', function(markers) {
 		for (var i = 0, len = markers.length; i < len; i ++) markers[i].setIcon(curIcon);
 	});
-
-/*
-	    $("#.tpop").droppable({
-        drop: function(event, ui) {
-          if($(ui.draggable).attr('data-mode')=='playlist')
-          {
-
-            if($('.sidebar_search_playlist_selected').length!=1) { alert('You can schedule only one item at a time.'); return; }
-
-            var item_type = 'playlist';
-            var item_id = $('.sidebar_search_playlist_selected').first().attr('data-id');
-            var item_name = $('.sidebar_search_playlist_selected').first().attr('data-name');
-
-          }
-
-          else return; // media_dynamic not supported yet.
-
-          var item_duration = $('.sidebar_search_media_selected').first().attr('data-duration');
-
-          Schedule.schedule.add_show_window(item_type,item_id,item_name,item_duration);
-
-        }
-
-    });
-*/
 
 $.getJSON("../modules/device_map/includes/canleg.json",function(data) {
     for (var i = 0; i < data.length; i++) {
