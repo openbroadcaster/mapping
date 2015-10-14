@@ -1,7 +1,7 @@
 ObMap
 =====
 
-REQUIREMENTS
+COMPONENTS
 ============
 <a href="http://jquery.com">jQuery</a><br>
 <a href="http://leafletjs.com">Leafletjs</a> javascript library.<br>
