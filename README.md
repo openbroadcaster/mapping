@@ -4,11 +4,11 @@ Show NAAD and NOAA weather watch alerts on a map
 
 INSTALL
 =====
-Clone git repo for module: 
+Clone git repo for ObMap module into the webroot/modules/device_map directory: 
  "git clone -b Prod https://github.com/openbroadcaster/ObMap.git device_map"
 
-Change ownership of all files to openbroadcaster:
- "chown openbroadcaster:openbroadcaster device_map/ -R"
+You may need to change ownership of all files to be readable by the web-user:
+ "chown web-user:web-user device_map/ -R"
 
 Install required PERL modules (as root):
 perl -MCPAN -e shell 'install XML::Simple XML::Twig JSON'
