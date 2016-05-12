@@ -19,8 +19,9 @@
 	top: 0;
 	}
 .leaflet-container {
-	overflow: auto;
+	overflow: hidden;
 	-ms-touch-action: none;
+	touch-action: none;
 	}
 .leaflet-tile,
 .leaflet-marker-icon,
@@ -278,7 +279,7 @@
 	border-radius: 5px;
 	}
 .leaflet-control-layers-toggle {
-	background-image: url('images/layers.png');
+	background-image: url(images/layers.png);
 	width: 36px;
 	height: 36px;
 	}
