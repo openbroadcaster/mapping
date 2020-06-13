@@ -1,0 +1,8 @@
+paginate: 5
+exclude:
+  - README.md
+project_title: foo-bar
+# Google services
+google_analytics: UA-56313059-3
+gems:
+  - jekyll-sitemap

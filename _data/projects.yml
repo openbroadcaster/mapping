@@ -1,0 +1,23 @@
+- name: OpenBroadcaster Server
+  github: https://github.com/openbroadcaster/observer
+  brief: Media Server Platform
+
+- name: OpenBroadcaster Player
+  github: https://github.com/openbroadcaster/obplayer
+  brief: Playout Device
+  
+- name: Drupal Broadcast Media
+  github: https://github.com/openbroadcaster/drupal-broadcast-media
+  brief: Drupal Broadcast Media Modules 
+
+- name: eBusker
+  github: https://github.com/openbroadcaster/eBuskerApp.git
+  brief: Pitch Money to Artists in realtime
+
+- name: OpenBroadcaster RDS
+  github: https://github.com/openbroadcaster/rds.git
+  brief: RDS Support for PIRA encoder hardware 
+    
+- name: OpenBroadcaster Mapping
+  github: https://github.com/openbroadcaster/mapping.git
+  brief: Infrastructure status EAS NAAD NOAA events
