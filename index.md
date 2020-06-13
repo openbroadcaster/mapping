@@ -11,7 +11,7 @@ title: index
 ## Mapping module
 {:toc}
 
-## DESCRIPTION
+## Description
 
 Show NAAD and NOAA public alerts on a map
 
@@ -23,7 +23,7 @@ The National Oceanic & Atmospheric Administration (NOAA) provides a <a href="htt
 
 ![ Mapping](img/mapping.jpg ){: .Mapping}
 
-## INSTALL
+## Install
 
 Clone git repo for Mapping module into the webroot/modules/device_map directory: 
  "git clone https://github.com/openbroadcaster/mapping.git device_map"
@@ -49,10 +49,11 @@ Add a CRON job to run conversion script. For example, to run every 15 minutes:
 
 Install the module from the admin/module menu in server to create a menu item.
 
-## COMPONENTS
+## Components
 
 <a href="http://jquery.com">jQuery</a><br>
 <a href="http://leafletjs.com">Leafletjs</a> javascript library.<br>
 <a href="https://github.com/perliedman/leaflet-realtime">Leaflet-Realtime</a> plugin for adding map layers for live tracking of GPS, sensor data, etc.
 
-![ Mapping](img/mapping.jpg ){: .Mapping}
+![ Mapping Settings](img/mapping_settings.png ){: .Mapping Settings}
+
