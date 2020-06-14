@@ -13,7 +13,7 @@ title: index
 
 ## Description
 
-Show NAAD and NOAA public alerts on a map
+Provides an interactive map, showing NAAD and NOAA public alerts areas affected by current CAP alerts, including Canada and US, current global weather patterns[1], as well as location of OBPlayer installations managed by your OB Server instance. 
 
 Mapping works as a standalone application and follows the OpenBroadcaster module framework to allow integration into the <a href="https://github.com/openbroadcaster/observer"> OBServer Platform</a>.
 
