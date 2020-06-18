@@ -6,16 +6,14 @@ title: index
 * TOC
 {:toc}
 
-<a name="dashboard"></a>
+## Mapping Module
 
-## Mapping module
-{:toc}
 
 ## Show NAAD and NOAA public alerts on a map
 
 ![ Mapping](img/mapping.jpg ){: .Mapping}
 
-Mapping works as a standalone application and follows the OpenBroadcaster module framework to allow integration into the <a href="https://github.com/openbroadcaster/observer"> observer Platform</a>.
+Mapping works as a standalone application and follows the OpenBroadcaster module framework to allow integration into the <a href="https://github.com/openbroadcaster/observer"> observer platform</a>.
 
 The National Alert Aggregation & Dissemination (NAAD)<a href="https://pelmorex.com/"> GeoRSS</a> feed provides realtime Active Public Safety Messages (CAP-CP) alerts issued by Authorized Government Agencies for Canada. The feed may be found at <a href="http://rss.naad-adna.pelmorex.com/">http://rss.naad-adna.pelmorex.com/</a>.<br> Conversion of the GeoRSS feed into geoJSON makes use of Andrew Harvey's excellent <a href="https://github.com/andrewharvey/map.rfs"> prototype</a>
 
@@ -67,6 +65,8 @@ Edit main js/layout.js at line 188:
      following 'layout.set_main_size();'
 	"ModuleDevicemap.init_map();"
 
+````
+
 Add a CRON job to run conversion script. For example, to run every 15 minutes:
 
 ````
@@ -74,6 +74,7 @@ Add a CRON job to run conversion script. For example, to run every 15 minutes:
  */15 * * * * cd /var/www/html/OpenBC/modules/device_map/includes && ./convert_emerg_feed.pl
 
 ````
+
 Install the module from the admin/module menu in server to create a menu item.
 
 ## Components
