@@ -1,3 +1,0 @@
-
-To generate updates for the map, schedule the following script (e.g. cron) to run every 30 minutes, or as frequently as desired.
-* cd /your_webroot/www/modules/device_map/includes && ./convert_emerg_feed.pl
