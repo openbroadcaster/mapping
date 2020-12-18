@@ -114,6 +114,8 @@ width:5px;
 .legend td {
    padding-left: 5px;
 }
+/* commenting out CSS which affects the rest of the OB interface. */
+/*
 .info {
     padding: 6px 8px;
     height:200px;
@@ -129,6 +131,7 @@ width:5px;
     margin: 0 0 5px;
     color: #777;
 }
+*/
 
 .legend .circle {
   border-radius: 50%;
