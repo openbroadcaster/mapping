@@ -22,7 +22,7 @@ options: {
 var ObsIcon = L.Icon.extend({
 	options: {
 			shadowUrl:
-				'./modules/device_map/css/images/icons/black/icon-shadow_off.png',
+				'./modules/player_map/css/images/icons/black/icon-shadow_off.png',
 			iconSize:     [20,20],
 			shadowSize:   [20,30],
 			iconAnchor:   [5,10],
@@ -31,13 +31,13 @@ var ObsIcon = L.Icon.extend({
 			}
 	});
 	var inactiveIcon = new ObsIcon({
-		iconUrl: 'modules/device_map/css/images/device_default.png',
+		iconUrl: 'modules/player_map/css/images/player_default.png',
 		});
 	var activeIcon = new ObsIcon({
-		iconUrl: 'modules/device_map/css/images/device_tv.png',
+		iconUrl: 'modules/player_map/css/images/player_tv.png',
 		});
 	var emergencyIcon = new ObsIcon_sm({
-		iconUrl: 'modules/device_map/css/images/device_tv_emergency.png',
+		iconUrl: 'modules/player_map/css/images/player_tv_emergency.png',
 		});
 		
 var naadStyle = {

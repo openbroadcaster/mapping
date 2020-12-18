@@ -2,7 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-<link rel="stylesheet" href="../css/devicemap.css" />
+<link rel="stylesheet" href="../css/playermap.css" />
 <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 <script src='http://code.jquery.com/jquery-1.8.2.min.js'></script>
 <script src='../../../js/common.js'></script>
@@ -90,19 +90,19 @@ function onEachFeature(feature, layer) {
 			}
 		});
 		var defaultIcon = new ObsIcon({
-			iconUrl: '../css/images/device_default.png',
+			iconUrl: '../css/images/player_default.png',
 			});
 		var DigitalSignageIcon = new ObsIcon({
-                        iconUrl: '../css/images/device_digitv.png',
+                        iconUrl: '../css/images/player_digitv.png',
                         }); 
 		var CATVChannelIcon = new ObsIcon({
-			iconUrl: '../css/images/device_catv.png',
+			iconUrl: '../css/images/player_catv.png',
 			});
 		var TVTransmitterIcon = new ObsIcon_sm({
-			iconUrl: '../css/images/device_tv.png',
+			iconUrl: '../css/images/player_tv.png',
 			});
 		var RadioTransmitterIcon = new ObsIcon({
-			iconUrl: '../css/images/device_radio.png',
+			iconUrl: '../css/images/player_radio.png',
 			});
         //var map = new L.Map('map');		 
 	var map = new L.Map('map').setView([60.2928,-134.25921], 13);
@@ -144,9 +144,9 @@ function onEachFeature(feature, layer) {
                 map.fitBounds(alerts.getBounds());
         });
         
-	$.getJSON("../devices_geojson.php",function (data) {
+	$.getJSON("../players_geojson.php",function (data) {
 
-		var devices = L.geoJson(data,{
+		var players = L.geoJson(data,{
 				onEachFeature: onEachFeature,
 				pointToLayer: function (feature, latlng) {
 				switch(feature.properties.icon_value){
@@ -162,7 +162,7 @@ function onEachFeature(feature, layer) {
 				return marker;
 				}
 			}).addTo(map);
-//        map.fitBounds(devices.getBounds());
+//        map.fitBounds(players.getBounds());
 	});
 
 </script>

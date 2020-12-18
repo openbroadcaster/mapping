@@ -17,13 +17,13 @@
     along with OpenBroadcaster Server.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-OBModules.DeviceMap = new Object();
-OBModules.DeviceMap.init = function()
+OBModules.PlayerMap = new Object();
+OBModules.PlayerMap.init = function()
 {
-  OB.Callbacks.add('ready',50,ModuleDevicemap.init_module);
+  OB.Callbacks.add('ready',50,ModulePlayermap.init_module);
 }
 
-var ModuleDevicemap = new function()
+var ModulePlayermap = new function()
 {
 
 this.window_resize = function()
@@ -34,9 +34,9 @@ this.window_resize = function()
 this.init_module = function()
 	{
 
-  $(window).resize(ModuleDevicemap.window_resize);
-  OB.UI.addSubMenuItem('media','EMS Alerts','device_map_ems_alerts',ModuleDevicemap.init_map,-20,'view_map');
-	// $('#obmenu-media').prepend('<li style="font-size:0.8em;" data-permissions="view_map"><a href="javascript: ModuleDevicemap.init_map();">ems alerts</a></li>');
+  $(window).resize(ModulePlayermap.window_resize);
+  OB.UI.addSubMenuItem('media','EMS Alerts','player_map_ems_alerts',ModulePlayermap.init_map,-20,'view_map');
+	// $('#obmenu-media').prepend('<li style="font-size:0.8em;" data-permissions="view_map"><a href="javascript: ModulePlayermap.init_map();">ems alerts</a></li>');
 
 //static leaflet files placed in js and css directories
 
@@ -61,8 +61,8 @@ this.init_module = function()
 this.init_map =  function()
 	{
 	
-OB.UI.replaceMain('modules/device_map/devicemap.html');
-ModuleDevicemap.window_resize();
+OB.UI.replaceMain('modules/player_map/playermap.html');
+ModulePlayermap.window_resize();
 
 function recentActive(lastconnect) {
         var nowMinus1H = Math.round((new Date()).getTime()/1000);
@@ -73,11 +73,11 @@ function recentActive(lastconnect) {
 }  
 
 var curIcon = new ObsIcon({
-        iconUrl: './modules/device_map/css/images/icons/black/broadcast.png',
+        iconUrl: './modules/player_map/css/images/icons/black/broadcast.png',
         })
 ;
 var emergencyIcon = new ObsIcon({
-        iconUrl: './modules/device_map/css/images/icons/red/broadcast.png',
+        iconUrl: './modules/player_map/css/images/icons/red/broadcast.png',
         })
 ;
 
@@ -157,7 +157,7 @@ var usalert = L.tileLayer.wms('http://216.38.80.5/arcgis/services/watchwarn/MapS
 
 var naadLink= '<a href="http://rss1.naad-adna.pelmorex.com">NAAD GeoRSS</a>';
 var alerts = L.realtime({
-	url: '../modules/device_map/includes/alerts.json',
+	url: '../modules/player_map/includes/alerts.json',
 	crossOrign: false,
 	type: 'json',
        },{
@@ -226,8 +226,8 @@ alerts.on('update', function() {
 
 var oms = new OverlappingMarkerSpiderfier(map, { keepSpiderfied:true });
 var bounds = new L.LatLngBounds([49.99,-142.0],[69.85,-125.8]);
-$.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
-	var devices = L.geoJson(data, {
+$.getJSON("./modules/player_map/html/players_geojson.php",function (data) {
+	var players = L.geoJson(data, {
 		pointToLayer: function(feature,latlng){
         	var dmarker = new L.Marker(latlng, {icon: curIcon });
 		var last_connect = !isNaN(feature.properties.last_connect) ? format_timestamp(feature.properties.last_connect) : '<i>never</i>';
@@ -257,7 +257,7 @@ $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
 		return dmarker;
 		}
         });
-	bounds.extend(devices.getBounds);
+	bounds.extend(players.getBounds);
 	map.fitBounds(bounds);
 	});
 	var popup = new L.Popup({closeButton: false, offset: new L.Point(0.5, -24)});
@@ -276,7 +276,7 @@ $.getJSON("./modules/device_map/html/devices_geojson.php",function (data) {
 		for (var i = 0, len = markers.length; i < len; i ++) markers[i].setIcon(curIcon);
 	});
 
-$.getJSON("../modules/device_map/includes/canleg.json",function(data) {
+$.getJSON("../modules/player_map/includes/canleg.json",function(data) {
     for (var i = 0; i < data.length; i++) {
         drawRow(data[i]);
     	}
@@ -288,7 +288,7 @@ $.getJSON("../modules/device_map/includes/canleg.json",function(data) {
     		rowData.imageData + "'></td>"));
 		}
 });
-$.getJSON("../modules/device_map/includes/usaleg.json",function(data) {
+$.getJSON("../modules/player_map/includes/usaleg.json",function(data) {
     for (var i = 0; i < data.length; i++) {
         drawRow(data[i]);
     	}

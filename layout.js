@@ -185,5 +185,5 @@ $(document).ready(function() {
 
 $(window).load(function() {
   layout.set_main_size();
-  ModuleDeviceMap.init_map();
+  ModulePlayerMap.init_map();
 });

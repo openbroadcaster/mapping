@@ -18,11 +18,11 @@
     along with OpenBroadcaster Server.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-class DeviceMapModule extends OBFModule
+class PlayerMapModule extends OBFModule
 {
 
-        public $name = 'Device Map';
-        public $description = 'Provide a map displaying location of EMS Alerts and status of OpenBroadcaster devices.';
+        public $name = 'Player Map';
+        public $description = 'Provide a map displaying location of EMS Alerts and status of OpenBroadcaster players.';
 
         public function callbacks()
         {
@@ -30,35 +30,35 @@ class DeviceMapModule extends OBFModule
         }
         public function install()
         {
-                $this->db->query('ALTER TABLE devices ADD COLUMN(`longitude` decimal(8,5) NOT NULL DEFAULT -134.25921)');
-                $this->db->query('ALTER TABLE devices ADD COLUMN(`latitude` decimal(8,5) NOT NULL DEFAULT 60.29280)');
-                $this->db->query('UPDATE devices SET longitude=-134.2592146, lattude=60.2928019');
+                $this->db->query('ALTER TABLE players ADD COLUMN(`longitude` decimal(8,5) NOT NULL DEFAULT -134.25921)');
+                $this->db->query('ALTER TABLE players ADD COLUMN(`latitude` decimal(8,5) NOT NULL DEFAULT 60.29280)');
+                $this->db->query('UPDATE players SET longitude=-134.2592146, lattude=60.2928019');
 /*
         $this->db->query('CREATE TABLE IF NOT EXISTS `module_map_bases` (
           `baselayer` varchar(255) NOT NULL,
           PRIMARY KEY (`baselayer`)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;');
 
-        $this->db->query('CREATE TABLE `module_device_map` (
-		  `device_id` int(10) unsigned NOT NULL,
+        $this->db->query('CREATE TABLE `module_player_map` (
+		  `player_id` int(10) unsigned NOT NULL,
 		  `zoomlevel` tinyint(4) NOT NULL DEFAULT "3",
           `baselayer` varchar(255) NOT NULL,
 		  `latitude` float NOT NULL DEFAULT "60.246",
 		  `longitude` float NOT NULL DEFAULT "-134.531",
-		  PRIMARY KEY (`device_id`),
-		  KEY `module_device_map_ibfk_1` (`baselayer`),
-  		CONSTRAINT `module_device_map_ibfk_1` FOREIGN KEY (`baselayer`) REFERENCES `module_map_bases` (`baselayer`)
+		  PRIMARY KEY (`player_id`),
+		  KEY `module_player_map_ibfk_1` (`baselayer`),
+  		CONSTRAINT `module_player_map_ibfk_1` FOREIGN KEY (`baselayer`) REFERENCES `module_map_bases` (`baselayer`)
 		) ENGINE=InnoDB DEFAULT CHARSET=utf8;');
 
 	$this->db->query('INSERT INTO obs.module_map_bases (baselayer) VALUES ("OSMBase")');
-	$this->db->query('INSERT INTO obs.module_device_map (device_id,baselayer) SELECT devices.id,"OSMBase" from devices;');
+	$this->db->query('INSERT INTO obs.module_player_map (player_id,baselayer) SELECT players.id,"OSMBase" from players;');
 
 */
         //View permission
         $data = array();
         $data['name'] = 'view_map';
         $data['description'] = 'view map';
-        $data['category'] = 'device';
+        $data['category'] = 'player';
 
         $this->db->insert('users_permissions',$data);
 
@@ -66,7 +66,7 @@ class DeviceMapModule extends OBFModule
         $data = array();
         $data['name'] = 'edit_map';
         $data['description'] = 'edit map defaults';
-        $data['category'] = 'device';
+        $data['category'] = 'player';
 
         $this->db->insert('users_permissions',$data);
                         return true;
@@ -77,10 +77,10 @@ class DeviceMapModule extends OBFModule
         public function uninstall()
         {
 
-//	$this->db->query('ALTER TABLE devices DROP COLUMN `longitude`');
-//	$this->db->query('ALTER TABLE devices DROP COLUMN `latitude`');
+//	$this->db->query('ALTER TABLE players DROP COLUMN `longitude`');
+//	$this->db->query('ALTER TABLE players DROP COLUMN `latitude`');
 
-//        $this->db->query('DROP TABLE  `module_device_map`');
+//        $this->db->query('DROP TABLE  `module_player_map`');
 //        $this->db->query('DROP TABLE  `module_map_bases`');
 
         $this->db->where('name','view_map');
