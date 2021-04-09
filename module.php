@@ -21,8 +21,8 @@
 class PlayerMapModule extends OBFModule
 {
 
-        public $name = 'Player Map';
-        public $description = 'Provide a map displaying location of EMS Alerts and status of OpenBroadcaster players.';
+        public $name = 'Mapping v1.0';
+        public $description = 'Provide a map displaying location of CAP Alerts and status of OBPlayers.';
 
         public function callbacks()
         {
