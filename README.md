@@ -39,6 +39,14 @@ Add a CRON job to run conversion script. For example, to run every 15 minutes:
 
 Install the module from the admin/module menu in server to create a menu item.
 
+Done - Show locations of installations of radio and signage
+Done - Display green, when all operating and providing heartbeats
+Done - Display an indicator when there is an emergency event underway
+Done - RED X if unit is not managed and disappeared more than n time
+
+TODO - Combine analytics and stats to show audience and listener metric
+TODO - Show installs by domains, reporting versions and poll using heartbeats
+
 COMPONENTS
 ============
 <a href="http://jquery.com">jQuery</a><br>
