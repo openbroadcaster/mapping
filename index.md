@@ -3,11 +3,11 @@ layout: default
 title: index
 ---
 
+# Mapping Module
+{:.no_toc}
+
 * TOC
 {:toc}
-
-## Mapping Module
-
 
 ## Show NAAD and NOAA public alerts on a map
 
