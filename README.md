@@ -37,6 +37,10 @@ Edit main js/layout.js at line 188:
 Add a CRON job to run conversion script. For example, to run every 15 minutes:
  */15 * * * * cd /var/www/html/OpenBC/modules/player_map/includes && ./convert_emerg_feed.pl
 
+~~~~
+<p><iframe scrolling="no" src="https://xxx.openbroadcaster.com/modules/device_map/html/showmap.html" title="OpenBroadcaster Canadian CAP Alerts Map" width="400" height="400" frameborder="0"></iframe></p
+~~~~
+
 Install the module from the admin/module menu in server to create a menu item.
 
 Done - Show locations of installations of radio and signage
