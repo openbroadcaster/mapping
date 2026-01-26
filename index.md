@@ -20,7 +20,7 @@ Mapping works as a standalone application and follows the OpenBroadcaster module
 
 The National Alert Aggregation & Dissemination (NAAD)<a href="https://pelmorex.com/"> GeoRSS</a> feed provides realtime Active Public Safety Messages (CAP-CP) alerts issued by Authorized Government Agencies for Canada. The feed may be found at <a href="http://rss.naad-adna.pelmorex.com/">http://rss.naad-adna.pelmorex.com/</a>.<br> Conversion of the GeoRSS feed into geoJSON makes use of Andrew Harvey's excellent <a href="https://github.com/andrewharvey/map.rfs"> prototype</a>
 
-The National Oceanic & Atmospheric Administration (NOAA) provides a <a href="https://idpgis.ncep.noaa.gov/arcgis/rest/services/NWS_Forecasts_Guidance_Warnings/watch_warn_adv/MapServer">WMS map service</a> shows where a warning of hazardous weather or hydrologic event is occurring, imminent or likely.
+The National Oceanic & Atmospheric Administration (NOAA) provides a <a href="https://www.arcgis.com/home/item.html?id=1fa940a56b374a2a8b23e46015832bfe">WMS map service</a> shows where a warning of hazardous weather or hydrologic event is occurring, imminent or likely.
 
 <br/>
 
