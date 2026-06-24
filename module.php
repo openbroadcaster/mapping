@@ -32,7 +32,6 @@ class PlayerMapModule extends OBFModule
         {
                 $this->db->query('ALTER TABLE players ADD COLUMN(`longitude` decimal(8,5) NOT NULL DEFAULT -134.25921)');
                 $this->db->query('ALTER TABLE players ADD COLUMN(`latitude` decimal(8,5) NOT NULL DEFAULT 60.29280)');
-                $this->db->query('UPDATE players SET longitude=-134.2592146, lattude=60.2928019');
 /*
         $this->db->query('CREATE TABLE IF NOT EXISTS `module_map_bases` (
           `baselayer` varchar(255) NOT NULL,

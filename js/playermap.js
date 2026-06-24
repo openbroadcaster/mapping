@@ -38,25 +38,11 @@ this.init_module = function()
   OB.UI.addSubMenuItem('media','EMS Alerts','player_map_ems_alerts',ModulePlayermap.init_map,-20,'view_map');
 	// $('#obmenu-media').prepend('<li style="font-size:0.8em;" data-permissions="view_map"><a href="javascript: ModulePlayermap.init_map();">ems alerts</a></li>');
 
-//static leaflet files placed in js and css directories
-
-           var file = document.createElement('link');
-       file.setAttribute('rel', 'stylesheet');
-       file.setAttribute('type', 'text/css');
-       file.setAttribute('href', 'https://leaflet.github.io/Leaflet.draw/leaflet.draw.css');
-       document.getElementsByTagName('head')[0].appendChild(file);
-
-           var script = document.createElement('script');
-       script.setAttribute('type', 'text/javascript');
-       script.setAttribute('src', 'https://leaflet.github.io/Leaflet.draw/leaflet.draw.js');
-       document.getElementsByTagName('head')[0].appendChild(script);
-
-           var script = document.createElement('script');
-       script.setAttribute('type', 'text/javascript');
-       // script.setAttribute('src', 'http://maps.stamen.com/js/tile.stamen.js?v1.2.3');
-       script.setAttribute('src', 'https://stamen-maps.a.ssl.fastly.net/js/tile.stamen.js?v1.2.3');
-       document.getElementsByTagName('head')[0].appendChild(script);
-     }	
+// Leaflet core + plugins (realtime, markercluster, fullscreen, spiderfier) are
+// bundled locally in this module's js/ directory and auto-loaded. The old
+// Stamen tile script and Leaflet.draw CDN loads were removed: Stamen shut down
+// in 2023 (the dead load crashed init_map), and Leaflet.draw was never used.
+     }
 
 this.init_map =  function()
 	{
@@ -110,15 +96,13 @@ var naadStyle = {
 var mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
 var markerLayer = new L.layerGroup();
 var OSMBase = L.tileLayer(
-		'https://{s}.tiles.mapbox.com/v3/geoprism.h4g8f1k5/{z}/{x}/{y}.png', {
-		attribution: '&copy; ' + mapLink ,
-		maxZoom: 18
+		'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		attribution: '&copy; ' + mapLink + ' contributors',
+		maxZoom: 19
 		});
 
-var watercolor = new  L.StamenTileLayer("watercolor");
-var toner= new  L.StamenTileLayer("toner");
 var map = L.map('map',{
-	layers:[toner,watercolor,OSMBase],
+	layers:[OSMBase],
 	attributionControl:false, 
 	fullscreenControl: true, 
 	fullscreenControlOptions: { position: 'topleft'}
@@ -133,8 +117,8 @@ var modis24 = L.tileLayer.wms('https://firms.modaps.eosdis.nasa.gov/wms/?', {
 		layers: 'fires24',
 		crs: L.CRS.EPSG4326,
 		reuseTiles: true,
-		attribution:  '&copy; ' + modisLink 
-		}).addTo(map);
+		attribution:  '&copy; ' + modisLink
+		});
 
 var modis48 = L.tileLayer.wms('https://firms.modaps.eosdis.nasa.gov/wms/?', {
 		format: 'img/png',
@@ -152,8 +136,8 @@ var usalert = L.tileLayer.wms('http://216.38.80.5/arcgis/services/watchwarn/MapS
 		transparent: true,
 		layers: 0,
 		reuseTiles: true,
-		attribution: '&copy; ' + noaaLink 
-		}).addTo(map);
+		attribution: '&copy; ' + noaaLink
+		});
 
 var naadLink= '<a href="http://rss1.naad-adna.pelmorex.com">NAAD GeoRSS</a>';
 var alerts = L.realtime({
@@ -183,24 +167,10 @@ markerLayer.addTo(map);
 credits.addAttribution('&#124; ' + naadLink);
 
 var bases = {
-            "Watercolor":watercolor,
-            "Contrast":toner,
             "OpenStreetMap": OSMBase
              };
-var clouds = L.OWM.clouds({showLegend: false, opacity: 0.5});
-var snow  = L.OWM.snow({showLegend: true, legendPosition:'bottomright',opacity: 0.5});
-var precipitation  = L.OWM.precipitation({showLegend: true, opacity: 0.5});
-var temperature  = L.OWM.temperature({showLegend: true, opacity: 0.4});
 var overlays = {
-//	"Canada Alert Areas" : alerts,
-        "NAAD Alerts (CAN)" : markerLayer,
-        "MODIS Fires - Past 24h" : modis24,
-        "MODIS Fires - Past 48h" : modis48,
-        "NOAA Alerts (USA)": usalert,
-        "Clouds": clouds,
-        "Snow": snow,
-        "Precipitation": precipitation,
-        "Temperature": temperature 
+        "NAAD Alerts (CAN)" : markerLayer
 	};
 
 var layerControl = L.control.layers(bases, overlays).addTo(map); 
@@ -257,7 +227,7 @@ $.getJSON("./modules/player_map/html/players_geojson.php",function (data) {
 		return dmarker;
 		}
         });
-	bounds.extend(players.getBounds);
+	bounds.extend(players.getBounds());
 	map.fitBounds(bounds);
 	});
 	var popup = new L.Popup({closeButton: false, offset: new L.Point(0.5, -24)});
