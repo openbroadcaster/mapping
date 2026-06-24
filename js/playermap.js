@@ -108,36 +108,26 @@ var map = L.map('map',{
 	fullscreenControlOptions: { position: 'topleft'}
 	}).setView([60.2928,-134.25921], 13);
 var credits = L.control.attribution({position: 'bottomleft'}).addTo(map);
-var modisLink = '<a href="http://earthdata.nasa.gov/data/nrt-data/firms">MODIS Hotspots:NASA</a>';
-var modis24 = L.tileLayer.wms('https://firms.modaps.eosdis.nasa.gov/wms/?', {
-		format: 'img/png',
-		version: '1.1.1',
-		transparent: false,
-		minZoom: 4,
-		layers: 'fires24',
-		crs: L.CRS.EPSG4326,
-		reuseTiles: true,
-		attribution:  '&copy; ' + modisLink
-		});
+var modisLink = '<a href="https://firms.modaps.eosdis.nasa.gov">FIRMS Hotspots:NASA</a>';
 
-var modis48 = L.tileLayer.wms('https://firms.modaps.eosdis.nasa.gov/wms/?', {
-		format: 'img/png',
-		version: '1.1.1',
-		transparent: false,
-		minZoom: 3,
-		layers: 'fires48',
-		crs: L.CRS.EPSG4326,
-		reuseTiles: true,
-		attribution:  '&copy; ' + modisLink
-		});
-var noaaLink= '<a href="http://gis.srh.noaa.gov/arcgis/services/watchwarn/MapServer/WMSServer?request=GetCapabilities&service=WMS">NOAA WMS</a>';
-var usalert = L.tileLayer.wms('http://216.38.80.5/arcgis/services/watchwarn/MapServer/WmsServer?', {
-		format: 'img/png',
+// === Optional overlay layers — paste your own free API keys to enable them. ===
+// Leave blank to keep the map at OpenStreetMap + NAAD alerts (no keys needed).
+// NASA FIRMS fire hotspots — free MAP_KEY: https://firms.modaps.eosdis.nasa.gov/api/map_key/
+var FIRMS_MAP_KEY = '';
+// OpenWeatherMap weather overlays — free key: https://home.openweathermap.org/users/sign_up
+var OWM_API_KEY = '';
+
+// NASA FIRMS moved to a keyed WMS endpoint. Other layers available with a key:
+// fires_modis_48, fires_modis_7, fires_viirs_snpp_24, ... (see FIRMS WMS docs).
+var modis24 = null;
+if (FIRMS_MAP_KEY) {
+	modis24 = L.tileLayer.wms('https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/' + FIRMS_MAP_KEY + '/', {
+		format: 'image/png',
 		transparent: true,
-		layers: 0,
-		reuseTiles: true,
-		attribution: '&copy; ' + noaaLink
+		layers: 'fires_modis_24',
+		attribution: '&copy; ' + modisLink
 		});
+}
 
 var naadLink= '<a href="http://rss1.naad-adna.pelmorex.com">NAAD GeoRSS</a>';
 var alerts = L.realtime({
@@ -166,6 +156,15 @@ markerLayer.addLayer(alerts);
 markerLayer.addTo(map);
 credits.addAttribution('&#124; ' + naadLink);
 
+var noaaLink = '<a href="https://www.weather.gov">NOAA NWS</a>';
+var usalert = L.tileLayer.wms('https://mapservices.weather.noaa.gov/eventdriven/services/WWA/watch_warn_adv/MapServer/WMSServer', {
+	layers: '0',
+	format: 'image/png',
+	transparent: true,
+	attribution: '&copy; ' + noaaLink
+	});
+usalert.addTo(map);
+
 var bases = {
             "OpenStreetMap": OSMBase
              };
@@ -173,7 +172,16 @@ var overlays = {
         "NAAD Alerts (CAN)" : markerLayer
 	};
 
-var layerControl = L.control.layers(bases, overlays).addTo(map); 
+// Add optional overlays only when their API key has been configured above.
+if (modis24) overlays['Fire Hotspots (24h)'] = modis24;
+overlays['NOAA Alerts (USA)'] = usalert;
+if (OWM_API_KEY) {
+	overlays['Clouds'] = L.OWM.clouds({appId: OWM_API_KEY, opacity: 0.5});
+	overlays['Precipitation'] = L.OWM.precipitation({appId: OWM_API_KEY, opacity: 0.5});
+	overlays['Temperature'] = L.OWM.temperature({appId: OWM_API_KEY, opacity: 0.4});
+}
+
+var layerControl = L.control.layers(bases, overlays).addTo(map);
 
 map.on('overlayremove', function(layer,name) {
 	if (layer = modis24) { 

@@ -204,3 +204,31 @@ div.legend::-webkit-scrollbar {
    width: 0px;
 }
 
+
+/* Legend readability on the dark admin theme: the legend was built for a light
+   map background (translucent white + brown/orange text), which disappears on
+   OB's dark theme. Force a solid light panel with dark text. */
+.legend {
+    background: rgba(255,255,255,0.95) !important;
+    color: #222 !important;
+}
+.legend td,
+.legend th {
+    color: #222 !important;
+}
+.legend th {
+    background: rgba(0,0,0,0.06) !important;
+}
+
+/* The float-right legend was dropping ~650px down the page on this layout
+   (rendered below the map instead of beside it). Pin it to the top-right of
+   the map container so it sits next to the map as intended. */
+#map_container { position: relative; }
+#legend.legend {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    bottom: 2px;
+    height: auto !important;
+    z-index: 500;
+}
